@@ -7,7 +7,7 @@ export interface Media {
 
 export interface ISendMessage {
   api_key: string
-  to: string
+  to: string | string[]
   from: string
   sms: string
   type: string

@@ -4,6 +4,7 @@ import {
   IsOptional,
   IsObject,
   ValidateNested,
+  ArrayMaxSize,
 } from 'class-validator'
 
 class MediaDto {
@@ -18,8 +19,9 @@ class MediaDto {
 
 export class SendMessageDto {
   @IsNotEmpty()
-  @IsString()
-  to: string
+  @IsString({ each: true }) // Validates each element of the array to be a string
+  @ArrayMaxSize(100) // Limit the array to a maximum of 100 elements
+  to: string[]
 
   @IsNotEmpty()
   @IsString()
