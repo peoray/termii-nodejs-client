@@ -6,7 +6,7 @@ export interface Media {
 }
 
 export interface ISendMessage {
-  apiKey: string
+  api_key: string
   to: string
   from: string
   sms: string
@@ -15,7 +15,9 @@ export interface ISendMessage {
   media?: Media
 }
 export interface ISendMessageResponse {
+  code: string
   message_id: string
+  message_id_str: string
   message: string
   balance: string
   user: string

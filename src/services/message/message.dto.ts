@@ -4,7 +4,6 @@ import {
   IsOptional,
   IsObject,
   ValidateNested,
-  IsEnum,
 } from 'class-validator'
 
 class MediaDto {
@@ -17,17 +16,7 @@ class MediaDto {
   caption: string
 }
 
-enum ChannelType {
-  DND = 'dnd',
-  GENERIC = 'generic',
-  WHATSAPP = 'whatsapp',
-}
-
 export class SendMessageDto {
-  @IsNotEmpty()
-  @IsString()
-  apiKey: string
-
   @IsNotEmpty()
   @IsString()
   to: string
@@ -46,8 +35,7 @@ export class SendMessageDto {
 
   @IsNotEmpty()
   @IsString()
-  @IsEnum(ChannelType)
-  channel: ChannelType
+  channel: string
 
   @IsOptional()
   @IsObject()

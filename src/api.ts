@@ -1,11 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import {
-  IAxiosStruct,
-  BaseError,
-  BASE_URL,
-  excludeFields,
-  handleAxiosError,
-} from './utils'
+import { IAxiosStruct, BaseError, BASE_URL, handleAxiosError } from './utils'
 
 export class TermiiCore {
   public request: AxiosInstance
@@ -23,19 +17,28 @@ export class TermiiCore {
 
   public async useRequest(req: IAxiosStruct) {
     try {
-      const customHeaders = excludeFields(
-        ['common', 'delete', 'get', 'head', 'put', 'patch', 'post'],
-        this.request.defaults.headers
-      )
+      const { method, url, data } = req
 
-      const getUrl = this.request.defaults.baseURL
-      const requestInstance = await axios.request({
-        url: `${getUrl}${req.url}`,
-        method: req.method,
-        headers: customHeaders,
-        data: req.data,
-      })
-      return requestInstance
+      if (method === 'GET' || method === 'DELETE') {
+        return this.request({
+          method,
+          url,
+          params: {
+            api_key: this.apiKey,
+          },
+        })
+      } else if (method === 'POST' || method === 'PUT') {
+        return this.request({
+          method,
+          url,
+          data: {
+            ...data,
+            api_key: this.apiKey,
+          },
+        })
+      } else {
+        throw new BaseError({ message: 'Invalid HTTP method' })
+      }
     } catch (error) {
       throw new BaseError({ message: handleAxiosError(error) })
     }
