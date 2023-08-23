@@ -26,6 +26,7 @@
     "build": "tsdx build",
     "lint": "tsdx lint",
     "test": "jest --config jest.config.js --no-cache",
+    "prepare": "tsdx build",
     "prepublishOnly": "pnpm test && pnpm build",
     "preversion": "pnpm test && pnpm build"
   },
