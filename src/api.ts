@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import { IAxiosStruct, BaseError, BASE_URL, handleAxiosError } from './utils'
+import { IAxiosStruct, BaseError, BASE_URL, handleErrors } from './utils'
 
 export class TermiiCore {
   public request: AxiosInstance
@@ -40,7 +40,9 @@ export class TermiiCore {
         throw new BaseError({ message: 'Invalid HTTP method' })
       }
     } catch (error) {
-      throw new BaseError({ message: handleAxiosError(error) })
+      // console.log(error)
+      console.log('--0=======00000========3030303=-===')
+      throw new BaseError({ message: handleErrors(error) })
     }
   }
 }
