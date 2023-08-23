@@ -72,6 +72,14 @@ export type ISendMessage =
       media: Media
     }
 
+export interface ISendBulkMessage {
+  to: string[]
+  from: string
+  type: string
+  channel: string
+  sms: string
+}
+
 export interface ISendMessageResponse {
   code: string
   message_id: string

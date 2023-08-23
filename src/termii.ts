@@ -12,5 +12,9 @@ export class Termii {
   constructor(public apiKey: string) {
     this.apiKey = apiKey
   }
-  public message = new Message(this.apiKey)
+
+  public switch = {
+    sendMessage: new Message(this.apiKey).sendMessage,
+    sendBulkMessage: new Message(this.apiKey).sendBulkMessage,
+  }
 }

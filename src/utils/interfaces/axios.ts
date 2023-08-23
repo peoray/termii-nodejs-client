@@ -1,7 +1,7 @@
-import { ISendMessage } from '../../types'
+import { ISendBulkMessage, ISendMessage } from '../../types'
 
 export interface IAxiosStruct {
   method: 'GET' | 'POST' | 'PUT' | 'DELETE'
   url: string
-  data?: ISendMessage
+  data?: ISendMessage | ISendBulkMessage
 }
