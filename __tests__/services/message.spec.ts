@@ -1,11 +1,23 @@
 import { Message } from '../../src/services'
-import { ISendMessage, ISendMessageResponse } from '../../src/types'
+import {
+  ISendBulkMessage,
+  ISendMessage,
+  ISendMessageResponse,
+} from '../../src/types'
 
 const message = new Message(
   'TLaURAdBvnUNS9sEbugcE2gyRdKd1rNPSVxAG3fQp9sfbtpVh6575KoTon2Fv9'
 )
 const mockMessage: ISendMessage = {
   to: '+2348012345678',
+  sms: 'Hello World',
+  from: 'Acme',
+  type: 'plain',
+  channel: 'generic',
+}
+
+const mockBulkMessage: ISendBulkMessage = {
+  to: ['+2348012345678'],
   sms: 'Hello World',
   from: 'Acme',
   type: 'plain',
@@ -27,6 +39,17 @@ describe('Message', () => {
       const response = await message.sendMessage(mockMessage)
 
       expect(response).toHaveBeenCalledWith(mockMessage)
+      expect(response).toEqual(responseData)
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error)
+    }
+  })
+
+  it('should send a bulk message', async () => {
+    try {
+      const response = await message.sendBulkMessage(mockBulkMessage)
+
+      expect(response).toHaveBeenCalledWith(mockBulkMessage)
       expect(response).toEqual(responseData)
     } catch (error) {
       expect(error).toBeInstanceOf(Error)

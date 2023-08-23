@@ -41,7 +41,6 @@ export class TermiiCore {
       }
     } catch (error) {
       // console.log(error)
-      console.log('--0=======00000========3030303=-===')
       throw new BaseError({ message: handleErrors(error) })
     }
   }
