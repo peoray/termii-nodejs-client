@@ -1,8 +1,8 @@
 {
-  "name": "termii",
-  "version": "1.0.0",
+  "name": "termii-node-sdk",
+  "version": "0.1.0",
   "description": "Nodejs SDK for Termii",
-  "author": "",
+  "author": "Emmanuel Raymond",
   "module": "dist/termii.esm.js",
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
   "readme": "README.md",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "typings": "dist/index.d.ts",
   "files": [
     "dist/**/*"
   ],
@@ -26,10 +25,23 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "lint": "tsdx lint",
-    "test": "jest --config jest.config.js --no-cache"
+    "test": "jest --config jest.config.js --no-cache",
+    "prepublishOnly": "pnpm test && pnpm build",
+    "preversion": "pnpm test && pnpm build"
   },
-  "keywords": [],
-  "license": "ISC",
+  "keywords": [
+    "termii",
+    "otp",
+    "sms",
+    "authentication",
+    "verification",
+    "telecom",
+    "voice",
+    "token",
+    "in-app verification",
+    "messaging"
+  ],
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.3",
     "@types/node": "^20.4.8",
