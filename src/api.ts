@@ -1,11 +1,23 @@
 import axios, { AxiosInstance } from 'axios'
 import { IAxiosStruct, BaseError, BASE_URL, handleErrors } from './utils'
 
+/**
+ * Represents the TermiiCore class, which provides an interface for making HTTP requests using Axios with a specific API key.
+ */
 export class TermiiCore {
+  /**
+   * The AxiosInstance used to make HTTP requests.
+   * @type {AxiosInstance}
+   */
   public request: AxiosInstance
 
+  /**
+   * Constructs a new TermiiCore instance.
+   * @param {string} apiKey - The API key used for authentication in API requests.
+   */
   constructor(public apiKey: string) {
     this.apiKey = apiKey
+    // Create an Axios instance with a base URL and common headers.
     this.request = axios.create({
       baseURL: BASE_URL,
       headers: {
@@ -15,6 +27,11 @@ export class TermiiCore {
     })
   }
 
+  /**
+   * Makes an HTTP request using Axios based on the provided request structure.
+   * @param {IAxiosStruct} req - The request structure containing method, URL, and data.
+   * @returns {Promise} A promise that resolves with the Axios response or rejects with an error.
+   */
   public async useRequest(req: IAxiosStruct) {
     try {
       const { method, url, data } = req
@@ -37,10 +54,11 @@ export class TermiiCore {
           },
         })
       } else {
+        // If the HTTP method is invalid, throw a BaseError.
         throw new BaseError({ message: 'Invalid HTTP method' })
       }
     } catch (error) {
-      // console.log(error)
+      // Catch any errors that occur during the request and wrap them in a BaseError.
       throw new BaseError({ message: handleErrors(error) })
     }
   }
