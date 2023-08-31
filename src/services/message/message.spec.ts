@@ -1,9 +1,9 @@
-import { Message } from '../../src/services'
+import { Message } from './message'
 import {
   ISendBulkMessage,
   ISendMessage,
   ISendMessageResponse,
-} from '../../src/types'
+} from '../../types'
 
 const message = new Message(
   'TLaURAdBvnUNS9sEbugcE2gyRdKd1rNPSVxAG3fQp9sfbtpVh6575KoTon2Fv9'
