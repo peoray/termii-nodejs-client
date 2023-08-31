@@ -5,6 +5,7 @@ import {
   ISendMessageResponse,
   ISendMessage,
   ISendBulkMessage,
+  ISendBulkMessageResponse,
 } from '../../types/message'
 
 /**
@@ -46,11 +47,11 @@ export class Message extends TermiiCore {
   /**
    * Sends messages in bulk using the Termii API.
    * @param {ISendBulkMessage} data - The bulk message data to be sent.
-   * @returns {Promise<ISendMessageResponse>} A promise that resolves with the API response for the sent bulk messages.
+   * @returns {Promise<ISendBulkMessageResponse>} A promise that resolves with the API response for the sent bulk messages.
    */
   public async sendBulkMessage(
     data: ISendBulkMessage
-  ): Promise<ISendMessageResponse> {
+  ): Promise<ISendBulkMessageResponse> {
     const requestObj: IAxiosStruct = {
       method: 'POST',
       url: `/sms/send/bulk`,
@@ -58,6 +59,6 @@ export class Message extends TermiiCore {
     }
 
     const response = await this.useRequest(requestObj)
-    return response?.data as ISendMessageResponse
+    return response?.data as ISendBulkMessageResponse
   }
 }
