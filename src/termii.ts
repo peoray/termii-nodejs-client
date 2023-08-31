@@ -9,12 +9,18 @@ import { Message } from './services'
  * const termii = new Termii('pk_NjI3ZmVmYmU1YTY1ZWM5OWJhOWFmMGJlOjoxMjE2NzA);
  **/
 export class Termii {
+  private messageInstance: Message
+
   constructor(public apiKey: string) {
-    this.apiKey = apiKey
+    this.messageInstance = new Message(apiKey)
   }
 
-  public switch = {
-    sendMessage: new Message(this.apiKey).sendMessage,
-    sendBulkMessage: new Message(this.apiKey).sendBulkMessage,
+  public get switch() {
+    return {
+      sendMessage: this.messageInstance.sendMessage.bind(this.messageInstance),
+      sendBulkMessage: this.messageInstance.sendBulkMessage.bind(
+        this.messageInstance
+      ),
+    }
   }
 }
