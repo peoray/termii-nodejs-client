@@ -1,16 +1,16 @@
 {
-  "name": "termii-node-sdk",
+  "name": "termii-nodejs-client",
   "version": "0.1.0",
-  "description": "Nodejs SDK for Termii",
+  "description": "Nodejs SDK wrapper for Termii API written with Typescript support",
   "author": "Emmanuel Raymond",
   "module": "dist/termii.esm.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/peoray/termii-node-sdk.git"
+    "url": "https://github.com/peoray/termii-nodejs-client.git"
   },
-  "homepage": "https://github.com/peoray/termii-node-sdk#readme",
+  "homepage": "https://github.com/peoray/termii-nodejs-client#readme",
   "bugs": {
-    "url": "https://github.com/peoray/termii-node-sdk/issues"
+    "url": "https://github.com/peoray/termii-nodejs-client/issues"
   },
   "readme": "README.md",
   "main": "dist/index.js",
@@ -19,7 +19,7 @@
     "dist/**/*"
   ],
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "scripts": {
     "start": "tsdx watch",
