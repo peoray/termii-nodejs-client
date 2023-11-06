@@ -1,1 +1,1 @@
-export * from './message/message'
+export * from './messaging/message/message'
