@@ -30,7 +30,7 @@ export class Termii {
    * const termii = new Termii('pk_NjI3ZmVmYmU1YTY1ZWM5OWJhOWFmMGJlOjoxMjE2NzA');
    * termii.switch.sendMessage(<!-- message data -->);
    */
-  public get switch() {
+  public get message() {
     return {
       sendMessage: this.messageInstance.sendMessage.bind(this.messageInstance),
       sendBulkMessage: this.messageInstance.sendBulkMessage.bind(

@@ -3,8 +3,8 @@ import {
   ISendBulkMessage,
   ISendMessage,
   ISendMessageResponse,
-} from '../../types'
-import { keys } from '../../utils/env'
+} from '../../../types'
+import { keys } from '../../../utils/env'
 
 const message = new Message(keys[0])
 
