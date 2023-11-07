@@ -15,11 +15,22 @@ interface Paginator<T> {
 
 interface ISenderID {
   sender_id: string
-  status: 'unblock' | 'pending' | 'blocked'
+  status: 'unblock' | 'pending' | 'block'
   company: string | null
   usecase: string | null
   country: string | null
   created_at: string
+}
+
+export interface IRequestSenderID {
+  sender_id: string
+  company: string
+  usecase: string
+}
+
+export interface IRequestSenderIDResponse {
+  code: string
+  message: string
 }
 
 export interface ISenderIDResponse extends Paginator<ISenderID> {}

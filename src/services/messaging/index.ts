@@ -19,6 +19,9 @@ export class MessageHandler {
       fetchSenderIDs: this.senderIdInstance.fetchSenderIDs.bind(
         this.senderIdInstance
       ),
+      requestSenderID: this.senderIdInstance.requestSenderID.bind(
+        this.senderIdInstance
+      ),
     }
   }
 }

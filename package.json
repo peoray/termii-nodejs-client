@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "rm -rf ./dist && tsdx build",
+    "build": "tsdx build",
     "lint": "tsdx lint",
     "test": "jest --config jest.config.js --no-cache",
     "prepare": "tsdx build",

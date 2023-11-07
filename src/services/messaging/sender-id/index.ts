@@ -1,6 +1,10 @@
 import { TermiiCore } from '../../../api'
-import { ISenderIDResponse } from '../../../types'
-import { IAxiosStruct } from '../../../utils'
+import {
+  ISenderIDResponse,
+  IRequestSenderID,
+  IRequestSenderIDResponse,
+} from '../../../types'
+import { IAxiosStruct, handleErrors } from '../../../utils'
 
 export class SenderId extends TermiiCore {
   constructor(apiKey: string) {
@@ -17,5 +21,23 @@ export class SenderId extends TermiiCore {
     const response = await this.useRequest(requestObj)
 
     return response?.data as ISenderIDResponse
+  }
+
+  public async requestSenderID(
+    data: IRequestSenderID
+  ): Promise<IRequestSenderIDResponse> {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'POST',
+        url: `/sender-id/request`,
+        data,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as IRequestSenderIDResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
   }
 }
