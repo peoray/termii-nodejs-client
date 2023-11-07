@@ -7,10 +7,11 @@ export class SenderId extends TermiiCore {
     super(apiKey)
   }
 
-  public async fetchSenderIDs(): Promise<ISenderIDResponse> {
+  public async fetchSenderIDs(page?: number): Promise<ISenderIDResponse> {
     const requestObj: IAxiosStruct = {
       method: 'GET',
       url: `/sender-id`,
+      page,
     }
 
     const response = await this.useRequest(requestObj)

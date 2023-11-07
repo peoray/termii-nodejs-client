@@ -34,15 +34,22 @@ export class TermiiCore {
    */
   public async useRequest(req: IAxiosStruct) {
     try {
-      const { method, url, data } = req
+      const { method, url, data, page } = req
 
       if (method === 'GET' || method === 'DELETE') {
+        const params: Record<string, any> = {
+          api_key: this.apiKey,
+        }
+
+        // Add 'page' to the params if it's provided in the request
+        if (method === 'GET' && page !== undefined) {
+          params.page = page
+        }
+
         return this.request({
           method,
           url,
-          params: {
-            api_key: this.apiKey,
-          },
+          params,
         })
       } else if (method === 'POST' || method === 'PUT') {
         return this.request({
