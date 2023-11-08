@@ -1,5 +1,5 @@
 import { TermiiCore } from '../../../api'
-import { IAxiosStruct } from '../../../utils'
+import { IAxiosStruct, handleErrors } from '../../../utils'
 // import { AxiosError } from 'axios'
 import {
   ISendMessageResponse,
@@ -29,19 +29,18 @@ export class Message extends TermiiCore {
    * @returns {Promise<ISendMessageResponse>} A promise that resolves with the API response for the sent message.
    */
   public async sendMessage(data: ISendMessage): Promise<ISendMessageResponse> {
-    // try {
-    const requestObj: IAxiosStruct = {
-      method: 'POST',
-      url: `/sms/send`,
-      data,
-    }
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'POST',
+        url: `/sms/send`,
+        data,
+      }
 
-    const response = await this.useRequest(requestObj)
-    return response?.data as ISendMessageResponse
-    // } catch (error) {
-    //   const { response } = error as AxiosError
-    //   throw response
-    // }
+      const response = await this.useRequest(requestObj)
+      return response?.data as ISendMessageResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
   }
 
   /**
@@ -52,13 +51,17 @@ export class Message extends TermiiCore {
   public async sendBulkMessage(
     data: ISendBulkMessage
   ): Promise<ISendBulkMessageResponse> {
-    const requestObj: IAxiosStruct = {
-      method: 'POST',
-      url: `/sms/send/bulk`,
-      data,
-    }
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'POST',
+        url: `/sms/send/bulk`,
+        data,
+      }
 
-    const response = await this.useRequest(requestObj)
-    return response?.data as ISendBulkMessageResponse
+      const response = await this.useRequest(requestObj)
+      return response?.data as ISendBulkMessageResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
   }
 }

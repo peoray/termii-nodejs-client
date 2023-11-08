@@ -12,15 +12,19 @@ export class SenderId extends TermiiCore {
   }
 
   public async fetchSenderIDs(page?: number): Promise<ISenderIDResponse> {
-    const requestObj: IAxiosStruct = {
-      method: 'GET',
-      url: `/sender-id`,
-      page,
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'GET',
+        url: `/sender-id`,
+        page,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as ISenderIDResponse
+    } catch (error) {
+      return handleErrors(error)
     }
-
-    const response = await this.useRequest(requestObj)
-
-    return response?.data as ISenderIDResponse
   }
 
   public async requestSenderID(
