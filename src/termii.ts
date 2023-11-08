@@ -10,22 +10,25 @@ import { MessageHandler } from './services'
  **/
 export class Termii {
   /**
-   * An instance of the Message class for sending messages.
+   * An instance of the MessageHandler class for sending messages.
    * @private
-   * @type {Message}
+   * @type {MessageHandler}
    */
   private messageInstance: MessageHandler
 
+  /**
+   * Creates an instance of Termii.
+   * @constructor
+   * @param {string} apiKey - The API key used for authorization.
+   */
   constructor(public apiKey: string) {
-    // Initialize the Message instance with the API key.
+    // Initialize the MessageHandler instance with the API key.
     this.messageInstance = new MessageHandler(apiKey)
   }
 
   /**
-   * Provides access to methods related to sending messages.
-   * @type {Object}
-   * @property {Function} sendMessage - Sends a single message.
-   * @property {Function} sendBulkMessage - Sends messages in bulk.
+   * Provides access to the MessageHandler instance for sending messages.
+   * @type {MessageHandler}
    * @example
    * const termii = new Termii('pk_NjI3ZmVmYmU1YTY1ZWM5OWJhOWFmMGJlOjoxMjE2NzA');
    * termii.switch.sendMessage(<!-- message data -->);
