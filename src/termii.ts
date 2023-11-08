@@ -1,4 +1,4 @@
-import { Message } from './services'
+import { MessageHandler } from './services'
 
 /**
  * The Termii class is the main class used to access the other classes in the Termii library.
@@ -14,11 +14,11 @@ export class Termii {
    * @private
    * @type {Message}
    */
-  private messageInstance: Message
+  private messageInstance: MessageHandler
 
   constructor(public apiKey: string) {
     // Initialize the Message instance with the API key.
-    this.messageInstance = new Message(apiKey)
+    this.messageInstance = new MessageHandler(apiKey)
   }
 
   /**
@@ -31,11 +31,6 @@ export class Termii {
    * termii.switch.sendMessage(<!-- message data -->);
    */
   public get message() {
-    return {
-      sendMessage: this.messageInstance.sendMessage.bind(this.messageInstance),
-      sendBulkMessage: this.messageInstance.sendBulkMessage.bind(
-        this.messageInstance
-      ),
-    }
+    return this.messageInstance.message
   }
 }
