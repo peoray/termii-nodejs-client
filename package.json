@@ -1,6 +1,6 @@
 {
   "name": "termii-nodejs-client",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Nodejs SDK wrapper for Termii API written with Typescript support",
   "author": "Emmanuel Raymond",
   "module": "dist/termii.esm.js",
@@ -19,7 +19,7 @@
     "dist/**/*"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=16"
   },
   "scripts": {
     "start": "tsdx watch",
