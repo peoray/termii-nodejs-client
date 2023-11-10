@@ -4,9 +4,8 @@ import {
   ISendMessage,
   ISendMessageResponse,
 } from '../../../types'
-import { keys } from '../../../utils/env'
 
-const message = new Message(keys[0])
+const message = new Message('api-key')
 
 const mockMessage: ISendMessage = {
   to: '+2348012345678',

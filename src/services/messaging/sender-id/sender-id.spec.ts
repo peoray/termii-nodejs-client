@@ -4,9 +4,8 @@ import {
   IRequestSenderID,
   IRequestSenderIDResponse,
 } from '../../../types'
-import { keys } from '../../../utils/env'
 
-const message = new SenderId(keys[0])
+const message = new SenderId('api-key')
 
 const mockRequestSenderIdData: IRequestSenderID = {
   sender_id: 'testing',
