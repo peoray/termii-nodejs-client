@@ -4,11 +4,8 @@ import {
   IRequestSenderID,
   IRequestSenderIDResponse,
 } from '../../../types'
-import { keys } from '../../../utils/env'
 
-console.log(keys)
-
-const message = new SenderId(keys[0])
+const message = new SenderId('api-key')
 
 const mockRequestSenderIdData: IRequestSenderID = {
   sender_id: 'testing',
@@ -66,11 +63,9 @@ describe('Sender ID', () => {
     }
   })
 
-  it('should request for a  a bulk message', async () => {
+  it('should request for a sender id', async () => {
     try {
       const response = await message.requestSenderID(mockRequestSenderIdData)
-
-      console.log(response)
 
       expect(response).toEqual(requestResponse)
     } catch (error) {
