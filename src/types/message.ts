@@ -1,3 +1,5 @@
+import { BaseResponse } from './constants'
+
 export interface Media {
   url: string
   caption: string
@@ -27,14 +29,6 @@ export interface ISendBulkMessage {
   type: string
   channel: 'dnd' | 'generic' | 'whatsapp'
   sms: string
-}
-
-interface BaseResponse {
-  code: string
-  message_id: string
-  message: string
-  balance: number
-  user: string
 }
 
 export interface ISendMessageResponse extends BaseResponse {
