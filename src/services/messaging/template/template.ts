@@ -1,28 +1,25 @@
 import { TermiiCore } from '../../../api'
-import {
-  ISendMessageWithNumber,
-  ISendMessageWithNumberResponse,
-} from '../../../types'
+import { IDeviceTemplate, IDeviceTemplateResponse } from '../../../types'
 import { IAxiosStruct, handleErrors } from '../../../utils'
 
-export class Number extends TermiiCore {
+export class Template extends TermiiCore {
   constructor(apiKey: string) {
     super(apiKey)
   }
 
-  public async sendMessageWithNumber(
-    data: ISendMessageWithNumber
-  ): Promise<ISendMessageWithNumberResponse> {
+  public async sendMessageWithTemplate(
+    data: IDeviceTemplate
+  ): Promise<IDeviceTemplateResponse> {
     try {
       const requestObj: IAxiosStruct = {
         method: 'POST',
-        url: `/sms/number/send`,
+        url: `/send/template`,
         data,
       }
 
       const response = await this.useRequest(requestObj)
 
-      return response?.data as ISendMessageWithNumberResponse
+      return response?.data as IDeviceTemplateResponse
     } catch (error) {
       return handleErrors(error)
     }
