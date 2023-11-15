@@ -71,7 +71,7 @@ Be sure to keep your API Credentials securely in environment variables.
 
 ## Available Services exposed by the SDK
 
-### Sender ID
+### Sender ID API
 
 A Sender ID is the name or number that identifies the sender of an SMS message.
 
@@ -109,7 +109,7 @@ console.log(response) // IRequestSenderIDResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/sender-id#request-sender-id)
 
-### Messaging
+### Messaging API
 
 This API allows businesses send text messages to their customers across different messaging channels.
 
@@ -158,7 +158,7 @@ console.log(response) // ISendBulkMessageResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/messaging-api#send-bulk-message)
 
-### Number
+### Number API
 
 This allows businesses send messages to customers using Termii's auto-generated messaging numbers that adapt to customers location.
 
@@ -175,6 +175,33 @@ const payload: ISendMessage = {
 
 const response = await termii.message.sendMessageWithNumber(payload)
 console.log(response) // ISendMessageWithNumberResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/number#send-message)
+
+### Templates API
+
+This helps businesses set a template for the one-time-passwords (pins) sent to their customers via whatsapp or sms.
+
+#### Device Template (Send Message with Template)
+
+```ts
+// import the template interfaces from the sdk
+import type { IDeviceTemplate, IDeviceTemplateResponse } from 'termii-nodejs-client';
+
+const payload: IDeviceTemplate = {
+  phone_number: '+1234567890',
+  device_id: 'device123',
+  template_id: 'template456',
+  data: {
+    product_name: 'Dummy Product',
+    otp: 123456,
+    expiry_time: '2023-11-16T12:00:00Z',
+  },
+}
+
+const response = await termii.message.sendMessageWithTemplate(payload)
+console.log(response) // IDeviceTemplateResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/number#send-message)
