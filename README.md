@@ -225,6 +225,23 @@ console.log(response) // IFetchPhonebooksResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#fetch-phonebooks)
 
+#### Create Phonebook
+
+```ts
+// import the template interfaces from the sdk
+import type { ICreatePhonebookResponse, ICreatePhonebook, } from 'termii-nodejs-client';
+
+const payload: ICreatePhonebook = {
+  phonebook_name: 'Test',
+  description: 'Phonebook for test',
+}
+
+const response = await termii.message.createPhonebook(payload)
+console.log(response) // ICreatePhonebookResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#create--a-phonebook)
+
 
 ## License
 
