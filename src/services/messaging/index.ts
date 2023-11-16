@@ -16,7 +16,7 @@ export class MessageHandler {
   private templateInstance: Template // Instance to handle sending message with template
   private phonebookInstance: Phonebook // Instance to manage phonebooks
   private contactInstance: Contact // Instance to manage contacts
-  private campaignnstance: Campaign // Instance to manage Campaigns
+  private campaignInstance: Campaign // Instance to manage Campaigns
 
   /**
    * Constructs a MessageHandler instance.
@@ -31,7 +31,7 @@ export class MessageHandler {
     this.templateInstance = new Template(apiKey)
     this.phonebookInstance = new Phonebook(apiKey)
     this.contactInstance = new Contact(apiKey)
-    this.campaignnstance = new Campaign(apiKey)
+    this.campaignInstance = new Campaign(apiKey)
   }
 
   /**
@@ -97,9 +97,13 @@ export class MessageHandler {
       deleteContact: this.contactInstance.deleteContact.bind(
         this.contactInstance
       ),
-      // Method to fetch contacts
-      fetchCampaigns: this.campaignnstance.fetchCampaigns.bind(
-        this.campaignnstance
+      // Method to fetch campaigns
+      fetchCampaigns: this.campaignInstance.fetchCampaigns.bind(
+        this.campaignInstance
+      ),
+      // Method to fetch campaign history
+      fetchCampaignHistory: this.campaignInstance.fetchCampaignHistory.bind(
+        this.campaignInstance
       ),
     }
   }

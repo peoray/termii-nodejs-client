@@ -12,4 +12,21 @@ interface Campaign {
   created_at: string
 }
 
+interface CampaignHistory {
+  id: number
+  sender: string
+  receiver: string
+  message: string
+  message_abbreviation: string
+  amount: number
+  channel: string
+  sms_type: string
+  message_id: string
+  status: string
+  date_created: string
+  last_updated: string
+}
+
 export interface IFetchCampaignsResponse extends BaseMetaResponse<Campaign> {}
+export interface IFetchCampaignHistoryResponse
+  extends BaseMetaResponse<CampaignHistory> {}
