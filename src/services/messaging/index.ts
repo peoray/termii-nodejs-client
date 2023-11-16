@@ -90,6 +90,10 @@ export class MessageHandler {
       createContact: this.contactInstance.createContact.bind(
         this.contactInstance
       ),
+      // Method to delete a contact
+      deleteContact: this.contactInstance.deleteContact.bind(
+        this.contactInstance
+      ),
     }
   }
 }

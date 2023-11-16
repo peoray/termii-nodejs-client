@@ -28,3 +28,7 @@ export interface BaseMetaResponse<T> {
   links: Links
   meta: Meta
 }
+
+export interface MessageResponse {
+  message: string
+}

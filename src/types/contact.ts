@@ -1,4 +1,4 @@
-import { BaseMetaResponse } from './constants'
+import { BaseMetaResponse, MessageResponse } from './constants'
 
 interface Contact {
   id: number
@@ -27,3 +27,5 @@ export interface ICreateContact {
 export interface ICreateContactResponse {
   data: Contact
 }
+
+export interface IDeleteContactResponse extends MessageResponse {}

@@ -1,4 +1,4 @@
-import { BaseMetaResponse } from './constants'
+import { BaseMetaResponse, MessageResponse } from './constants'
 
 interface Phonebook {
   id: string
@@ -15,6 +15,4 @@ export interface IPhonebook {
   description: string
 }
 
-export interface IPhonebookResponse {
-  message: string
-}
+export interface IPhonebookResponse extends MessageResponse {}
