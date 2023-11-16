@@ -206,6 +206,26 @@ console.log(response) // IDeviceTemplateResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/templates#device-template)
 
+### Phonebooks
+
+Create, view & manage phonebooks using these APIs. Each phonebook can be identified by a unique ID, which makes it easier to edit or delete a phonebook.
+
+#### Fetch Phonebooks
+
+```ts
+// import the template interfaces from the sdk
+import type { IFetchPhonebooksResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchPhonebooks()
+
+// to fetch another page - pass the page number to the method
+const response = await termii.message.fetchPhonebooks(2)
+console.log(response) // IFetchPhonebooksResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#fetch-phonebooks)
+
+
 ## License
 
 [MIT](https://github.com/peoray/termii-nodejs-client/blob/main/LICENSE)
