@@ -229,18 +229,35 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the template interfaces from the sdk
-import type { ICreatePhonebookResponse, ICreatePhonebook, } from 'termii-nodejs-client';
+import type { IPhonebookResponse, IPhonebook, } from 'termii-nodejs-client';
 
-const payload: ICreatePhonebook = {
+const payload: IPhonebook = {
   phonebook_name: 'Test',
   description: 'Phonebook for test',
 }
 
 const response = await termii.message.createPhonebook(payload)
-console.log(response) // ICreatePhonebookResponse
+console.log(response) // IPhonebookResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#create--a-phonebook)
+
+#### Update Phonebook
+
+```ts
+// import the template interfaces from the sdk
+import type { IPhonebookResponse, IPhonebook, } from 'termii-nodejs-client';
+
+const payload: IPhonebook = {
+  phonebook_name: 'Update testTest',
+  description: 'Updated Phonebook for test',
+}
+
+const response = await termii.message.updatePhonebook('phonebook_id', payload)
+console.log(response) // IPhonebookResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#update-phonebook)
 
 
 ## License
