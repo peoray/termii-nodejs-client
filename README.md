@@ -204,7 +204,73 @@ const response = await termii.message.sendMessageWithTemplate(payload)
 console.log(response) // IDeviceTemplateResponse
 ```
 
-Find more details about the parameters and response for the above method [here](https://developers.termii.com/number#send-message)
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/templates#device-template)
+
+### Phonebooks
+
+Create, view & manage phonebooks using these APIs. Each phonebook can be identified by a unique ID, which makes it easier to edit or delete a phonebook.
+
+#### Fetch Phonebooks
+
+```ts
+// import the phonebook interfaces from the sdk
+import type { IFetchPhonebooksResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchPhonebooks()
+
+// to fetch another page - pass the page number to the method
+const response = await termii.message.fetchPhonebooks(2)
+console.log(response) // IFetchPhonebooksResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#fetch-phonebooks)
+
+#### Create Phonebook
+
+```ts
+// import the phonebook interfaces from the sdk
+import type { IPhonebookResponse, IPhonebook, } from 'termii-nodejs-client';
+
+const payload: IPhonebook = {
+  phonebook_name: 'Test',
+  description: 'Phonebook for test',
+}
+
+const response = await termii.message.createPhonebook(payload)
+console.log(response) // IPhonebookResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#create--a-phonebook)
+
+#### Update Phonebook
+
+```ts
+// import the phonebook interfaces from the sdk
+import type { IPhonebookResponse, IPhonebook, } from 'termii-nodejs-client';
+
+const payload: IPhonebook = {
+  phonebook_name: 'Update testTest',
+  description: 'Updated Phonebook for test',
+}
+
+const response = await termii.message.updatePhonebook('phonebook_id', payload)
+console.log(response) // IPhonebookResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#update-phonebook)
+
+#### Delete Phonebook
+
+```ts
+// import the phonebook interfaces from the sdk
+import type { IPhonebookResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.deletePhonebook('phonebook_id')
+console.log(response) // IPhonebookResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#delete-phonebook)
+
 
 ## License
 
