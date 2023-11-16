@@ -290,6 +290,27 @@ console.log(response) // IFetchContactsResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#fetch-contacts-by-phonebook-id)
 
+#### Add single contacts to phonebook
+
+```ts
+// import the contact interfaces from the sdk
+import type { ICreateContact, ICreateContactResponse } from 'termii-nodejs-client';
+
+const payload: ICreateContact = {
+  phone_number: '8123696237',
+  email_address: 'test@gmail.com',
+  first_name: 'test',
+  last_name: 'contact',
+  company: 'Termii',
+  country_code: '234',
+}
+
+const response = await termii.message.createContact('phonebook_id', payload)
+console.log(response) // ICreateContactResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#add-single-contacts-to-phonebook)
+
 
 ## License
 
