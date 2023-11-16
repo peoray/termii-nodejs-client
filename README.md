@@ -213,7 +213,7 @@ Create, view & manage phonebooks using these APIs. Each phonebook can be identif
 #### Fetch Phonebooks
 
 ```ts
-// import the template interfaces from the sdk
+// import the phonebook interfaces from the sdk
 import type { IFetchPhonebooksResponse } from 'termii-nodejs-client';
 
 const response = await termii.message.fetchPhonebooks()
@@ -228,7 +228,7 @@ Find more details about the parameters and response for the above method [here](
 #### Create Phonebook
 
 ```ts
-// import the template interfaces from the sdk
+// import the phonebook interfaces from the sdk
 import type { IPhonebookResponse, IPhonebook, } from 'termii-nodejs-client';
 
 const payload: IPhonebook = {
@@ -245,7 +245,7 @@ Find more details about the parameters and response for the above method [here](
 #### Update Phonebook
 
 ```ts
-// import the template interfaces from the sdk
+// import the phonebook interfaces from the sdk
 import type { IPhonebookResponse, IPhonebook, } from 'termii-nodejs-client';
 
 const payload: IPhonebook = {
@@ -258,6 +258,18 @@ console.log(response) // IPhonebookResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#update-phonebook)
+
+#### Delete Phonebook
+
+```ts
+// import the phonebook interfaces from the sdk
+import type { IPhonebookResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.deletePhonebook('phonebook_id')
+console.log(response) // IPhonebookResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#delete-phonebook)
 
 
 ## License
