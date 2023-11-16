@@ -1,4 +1,4 @@
-import { BaseMetaResponse } from './constants'
+import { BaseMetaResponse, MessageResponse } from './constants'
 
 interface Campaign {
   campaign_id: string
@@ -30,3 +30,19 @@ interface CampaignHistory {
 export interface IFetchCampaignsResponse extends BaseMetaResponse<Campaign> {}
 export interface IFetchCampaignHistoryResponse
   extends BaseMetaResponse<CampaignHistory> {}
+
+export interface ISendCampaign {
+  country_code: string
+  sender_id: string
+  message: string
+  channel: string
+  message_type: string
+  phonebook_id: string
+  delimiter: string
+  remove_duplicate: string
+  campaign_type: string
+  schedule_time: string
+  schedule_sms_status: string
+}
+
+export interface ISendCampaignResponse extends MessageResponse {}

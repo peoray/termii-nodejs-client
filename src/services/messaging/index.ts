@@ -105,6 +105,10 @@ export class MessageHandler {
       fetchCampaignHistory: this.campaignInstance.fetchCampaignHistory.bind(
         this.campaignInstance
       ),
+      // Method to send campaign
+      sendCampaign: this.campaignInstance.sendCampaign.bind(
+        this.campaignInstance
+      ),
     }
   }
 }
