@@ -323,6 +323,25 @@ console.log(response) // IDeleteContactResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#delete-phonebook)
 
+### Campaign
+
+Using the campaign APIs, you can view, manage and send a campaign to a phonebook.
+
+#### Fetch campaigns
+
+```ts
+// import the campaign interfaces from the sdk
+import type { IFetchCampaignsResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchCampaigns()
+
+// to fetch another page - pass the page number to the method
+const response = await termii.message.fetchCampaigns( 2)
+console.log(response) // IFetchCampaignsResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#fetch-campaigns)
+
 
 ## License
 
