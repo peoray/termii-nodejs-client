@@ -67,6 +67,10 @@ export class MessageHandler {
       fetchPhonebooks: this.phonebookInstance.fetchPhonebooks.bind(
         this.phonebookInstance
       ),
+      // Method to create phonebook
+      createPhonebook: this.phonebookInstance.createPhonebook.bind(
+        this.phonebookInstance
+      ),
     }
   }
 }

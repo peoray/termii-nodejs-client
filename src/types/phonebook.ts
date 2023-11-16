@@ -28,3 +28,12 @@ export interface IFetchPhonebooksResponse {
   links: Links
   meta: Meta
 }
+
+export interface ICreatePhonebook {
+  phonebook_name: string
+  description: string
+}
+
+export interface ICreatePhonebookResponse {
+  message: string
+}
