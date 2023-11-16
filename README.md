@@ -311,6 +311,18 @@ console.log(response) // ICreateContactResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#add-single-contacts-to-phonebook)
 
+#### Delete contact
+
+```ts
+// import the contact interfaces from the sdk
+import type { IDeleteContactResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.deleteContact('contact_id')
+console.log(response) // IDeleteContactResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#delete-phonebook)
+
 
 ## License
 
