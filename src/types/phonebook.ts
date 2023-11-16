@@ -29,11 +29,11 @@ export interface IFetchPhonebooksResponse {
   meta: Meta
 }
 
-export interface ICreatePhonebook {
+export interface IPhonebook {
   phonebook_name: string
   description: string
 }
 
-export interface ICreatePhonebookResponse {
+export interface IPhonebookResponse {
   message: string
 }

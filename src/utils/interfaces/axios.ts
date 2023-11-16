@@ -1,5 +1,5 @@
 export interface IAxiosStruct {
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE'
+  method: 'GET' | 'POST' | 'PATCH' | 'DELETE'
   url: string
   data?: any
   page?: number

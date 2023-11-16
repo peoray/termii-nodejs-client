@@ -71,6 +71,10 @@ export class MessageHandler {
       createPhonebook: this.phonebookInstance.createPhonebook.bind(
         this.phonebookInstance
       ),
+      // Method to update phonebook
+      updatePhonebook: this.phonebookInstance.updatePhonebook.bind(
+        this.phonebookInstance
+      ),
     }
   }
 }

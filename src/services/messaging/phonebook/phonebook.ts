@@ -1,8 +1,10 @@
 import { TermiiCore } from '../../../api'
 import {
   IFetchPhonebooksResponse,
-  ICreatePhonebook,
-  ICreatePhonebookResponse,
+  IPhonebook,
+  IPhonebookResponse,
+  //   IUpdatePhonebook,
+  //   IUpdatePhonebookResponse,
 } from '../../../types'
 import { IAxiosStruct, handleErrors } from '../../../utils'
 
@@ -29,9 +31,7 @@ export class Phonebook extends TermiiCore {
     }
   }
 
-  public async createPhonebook(
-    data: ICreatePhonebook
-  ): Promise<ICreatePhonebookResponse> {
+  public async createPhonebook(data: IPhonebook): Promise<IPhonebookResponse> {
     try {
       const requestObj: IAxiosStruct = {
         method: 'POST',
@@ -41,7 +41,26 @@ export class Phonebook extends TermiiCore {
 
       const response = await this.useRequest(requestObj)
 
-      return response?.data as ICreatePhonebookResponse
+      return response?.data as IPhonebookResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
+  }
+
+  public async updatePhonebook(
+    phonebook_id: string,
+    data: IPhonebook
+  ): Promise<IPhonebookResponse> {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'PATCH',
+        url: `/phonebooks/${phonebook_id}`,
+        data,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as IPhonebookResponse
     } catch (error) {
       return handleErrors(error)
     }

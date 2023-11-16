@@ -51,7 +51,7 @@ export class TermiiCore {
           url,
           params,
         })
-      } else if (method === 'POST' || method === 'PUT') {
+      } else if (method === 'POST' || method === 'PATCH') {
         return this.request({
           method,
           url,
