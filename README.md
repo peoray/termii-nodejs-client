@@ -288,7 +288,7 @@ const response = await termii.message.fetchContacts('phonebook_id', 2)
 console.log(response) // IFetchContactsResponse
 ```
 
-Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#fetch-contacts-by-phonebook-id)
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/contacts#fetch-contacts-by-phonebook-id)
 
 #### Add single contacts to phonebook
 
@@ -309,7 +309,7 @@ const response = await termii.message.createContact('phonebook_id', payload)
 console.log(response) // ICreateContactResponse
 ```
 
-Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#add-single-contacts-to-phonebook)
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/contacts#add-single-contacts-to-phonebook)
 
 #### Delete contact
 
@@ -321,7 +321,69 @@ const response = await termii.message.deleteContact('contact_id')
 console.log(response) // IDeleteContactResponse
 ```
 
-Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#delete-phonebook)
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/contacts#delete-phonebook)
+
+### Campaign
+
+Using the campaign APIs, you can view, manage and send a campaign to a phonebook.
+
+#### Fetch campaigns
+
+```ts
+// import the campaign interfaces from the sdk
+import type { IFetchCampaignsResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchCampaigns()
+
+// to fetch another page - pass the page number to the method
+const response = await termii.message.fetchCampaigns(2)
+console.log(response) // IFetchCampaignsResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/campaign#fetch-campaigns)
+
+#### Fetch campaign history
+
+```ts
+// import the campaign interfaces from the sdk
+import type { fetchCampaignHistoryResponseData } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchCampaigns('campaign_id')
+
+// to fetch another page - pass the page number to the method after campaign ID
+const response = await termii.message.fetchCampaigns('campaign_id', 2)
+console.log(response) // fetchCampaignHistoryResponseData
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/campaign#fetch-campaign-history)
+
+#### Send a campaign
+
+```ts
+// import the campaign interfaces from the sdk
+import type { ISendCampaign, ISendCampaignResponse } from 'termii-nodejs-client';
+
+const payload: ISendCampaign = {
+  api_key: "Your API KEY",
+  country_code: "234",
+  sender_id: "Termii",
+  message: "Welcome to Termii.",
+  channel: "generic",
+  message_type: "Plain",
+  phonebook_id: "2d9f4a02-85b8-45e5-9f5b-30f93ef472e2",
+  delimiter: ",",
+  remove_duplicate: "yes",
+  campaign_type: "personalized",
+  schedule_time: "30-06-2021 6:00",
+  schedule_sms_status: "scheduled"
+}
+
+const response = await termii.message.sendCampaign(payload)
+
+console.log(response) // ISendCampaignResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/campaign#send-a-campaign)
 
 
 ## License
