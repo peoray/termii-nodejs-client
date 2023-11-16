@@ -1,5 +1,9 @@
 import { Phonebook } from './phonebook'
-import { IFetchPhonebooksResponse } from '../../../types'
+import {
+  IFetchPhonebooksResponse,
+  ICreatePhonebook,
+  ICreatePhonebookResponse,
+} from '../../../types'
 
 const phonebookInstance = new Phonebook('api-key')
 
@@ -30,12 +34,33 @@ const fetchPhonebooksResponseData: IFetchPhonebooksResponse = {
   },
 }
 
+const createPhonebookData: ICreatePhonebook = {
+  phonebook_name: 'Test',
+  description: 'Phonebook for test',
+}
+
+const createPhonebookResponse: ICreatePhonebookResponse = {
+  message: 'Phonebook added successfully',
+}
+
 describe('Phonebook', () => {
   it('should fetch list of phonebooks', async () => {
     try {
       const response = await phonebookInstance.fetchPhonebooks()
 
       expect(response).toEqual(fetchPhonebooksResponseData)
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error)
+    }
+  })
+
+  it('should create a phonebook', async () => {
+    try {
+      const response = await phonebookInstance.createPhonebook(
+        createPhonebookData
+      )
+
+      expect(response).toEqual(createPhonebookResponse)
     } catch (error) {
       expect(error).toBeInstanceOf(Error)
     }
