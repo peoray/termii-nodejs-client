@@ -204,7 +204,7 @@ const response = await termii.message.sendMessageWithTemplate(payload)
 console.log(response) // IDeviceTemplateResponse
 ```
 
-Find more details about the parameters and response for the above method [here](https://developers.termii.com/number#send-message)
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/templates#device-template)
 
 ## License
 
