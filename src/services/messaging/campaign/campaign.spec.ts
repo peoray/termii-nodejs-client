@@ -2,6 +2,8 @@ import { Campaign } from './campaign'
 import {
   IFetchCampaignHistoryResponse,
   IFetchCampaignsResponse,
+  ISendCampaign,
+  ISendCampaignResponse,
 } from '../../../types'
 
 const campaignInstance = new Campaign('api-key')
@@ -72,6 +74,24 @@ const fetchCampaignHistoryResponseData: IFetchCampaignHistoryResponse = {
   },
 }
 
+const payload: ISendCampaign = {
+  country_code: '234',
+  sender_id: 'Termii',
+  message: 'Welcome to Termii.',
+  channel: 'generic',
+  message_type: 'Plain',
+  phonebook_id: '2d9f4a02-85b8-4d84-9f5b-30f93ef472e2',
+  delimiter: ',',
+  remove_duplicate: 'yes',
+  campaign_type: 'personalized',
+  schedule_time: '30-06-2024 6:00',
+  schedule_sms_status: 'scheduled',
+}
+
+const sendCampaignResponse: ISendCampaignResponse = {
+  message: 'Your campaign has been scheduled',
+}
+
 describe('Contact', () => {
   it('should fetch list of campaigns', async () => {
     try {
@@ -88,6 +108,16 @@ describe('Contact', () => {
       const response = await campaignInstance.fetchCampaignHistory('12345678')
 
       expect(response).toEqual(fetchCampaignHistoryResponseData)
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error)
+    }
+  })
+
+  it('should send a campaign', async () => {
+    try {
+      const response = await campaignInstance.sendCampaign(payload)
+
+      expect(response).toEqual(sendCampaignResponse)
     } catch (error) {
       expect(error).toBeInstanceOf(Error)
     }
