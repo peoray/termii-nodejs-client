@@ -336,11 +336,26 @@ import type { IFetchCampaignsResponse } from 'termii-nodejs-client';
 const response = await termii.message.fetchCampaigns()
 
 // to fetch another page - pass the page number to the method
-const response = await termii.message.fetchCampaigns( 2)
+const response = await termii.message.fetchCampaigns(2)
 console.log(response) // IFetchCampaignsResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#fetch-campaigns)
+
+#### Fetch campaign history
+
+```ts
+// import the campaign interfaces from the sdk
+import type { fetchCampaignHistoryResponseData } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchCampaigns('campaign_id')
+
+// to fetch another page - pass the page number to the method after campaign ID
+const response = await termii.message.fetchCampaigns('campaign_id', 2)
+console.log(response) // fetchCampaignHistoryResponseData
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#fetch-campaign-history)
 
 
 ## License
