@@ -271,6 +271,58 @@ console.log(response) // IPhonebookResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#delete-phonebook)
 
+### Contacts
+
+Contacts API allows you manage (i.e. edit, update, & delete) contacts in your phonebook.
+
+#### Fetch contacts by phonebook ID
+
+```ts
+// import the contact interfaces from the sdk
+import type { IFetchContactsResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.fetchContacts('phonebook_id')
+
+// to fetch another page - pass the page number to the method after the phonebook ID
+const response = await termii.message.fetchContacts('phonebook_id', 2)
+console.log(response) // IFetchContactsResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#fetch-contacts-by-phonebook-id)
+
+#### Add single contacts to phonebook
+
+```ts
+// import the contact interfaces from the sdk
+import type { ICreateContact, ICreateContactResponse } from 'termii-nodejs-client';
+
+const payload: ICreateContact = {
+  phone_number: '8123696237',
+  email_address: 'test@gmail.com',
+  first_name: 'test',
+  last_name: 'contact',
+  company: 'Termii',
+  country_code: '234',
+}
+
+const response = await termii.message.createContact('phonebook_id', payload)
+console.log(response) // ICreateContactResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#add-single-contacts-to-phonebook)
+
+#### Delete contact
+
+```ts
+// import the contact interfaces from the sdk
+import type { IDeleteContactResponse } from 'termii-nodejs-client';
+
+const response = await termii.message.deleteContact('contact_id')
+console.log(response) // IDeleteContactResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/phonebook#delete-phonebook)
+
 
 ## License
 
