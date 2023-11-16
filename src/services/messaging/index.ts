@@ -75,6 +75,10 @@ export class MessageHandler {
       updatePhonebook: this.phonebookInstance.updatePhonebook.bind(
         this.phonebookInstance
       ),
+      // Method to delete phonebook
+      deletePhonebook: this.phonebookInstance.deletePhonebook.bind(
+        this.phonebookInstance
+      ),
     }
   }
 }

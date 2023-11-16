@@ -65,4 +65,21 @@ export class Phonebook extends TermiiCore {
       return handleErrors(error)
     }
   }
+
+  public async deletePhonebook(
+    phonebook_id: string
+  ): Promise<IPhonebookResponse> {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'DELETE',
+        url: `/phonebooks/${phonebook_id}`,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as IPhonebookResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
+  }
 }
