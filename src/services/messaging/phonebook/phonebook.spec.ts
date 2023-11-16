@@ -47,6 +47,10 @@ const updatePhonebookResponse: IPhonebookResponse = {
   message: 'Phonebook Updated successfully',
 }
 
+const deletePhonebookResponse: IPhonebookResponse = {
+  message: 'Phone Book Has been Deleted Successfully',
+}
+
 describe('Phonebook', () => {
   it('should fetch list of phonebooks', async () => {
     try {
@@ -77,6 +81,17 @@ describe('Phonebook', () => {
       )
 
       expect(response).toEqual(updatePhonebookResponse)
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error)
+    }
+  })
+
+  it('should delete a phonebook', async () => {
+    try {
+      const phonebookId = '123456'
+      const response = await phonebookInstance.deletePhonebook(phonebookId)
+
+      expect(response).toEqual(deletePhonebookResponse)
     } catch (error) {
       expect(error).toBeInstanceOf(Error)
     }
