@@ -3,6 +3,7 @@ import { SenderId } from './sender-id'
 import { Number } from './number/number'
 import { Template } from './template/template'
 import { Phonebook } from './phonebook/phonebook'
+import { Contact } from './contact/contact'
 
 /**
  * The MessageHandler class handles message-related functionalities by providing access to message and sender ID instances.
@@ -13,6 +14,7 @@ export class MessageHandler {
   private numberInstance: Number // Instance to handle sending message with auto generated number
   private templateInstance: Template // Instance to handle sending message with template
   private phonebookInstance: Phonebook // Instance to manage phonebooks
+  private contactInstance: Contact // Instance to manage contacts
 
   /**
    * Constructs a MessageHandler instance.
@@ -26,6 +28,7 @@ export class MessageHandler {
     this.numberInstance = new Number(apiKey)
     this.templateInstance = new Template(apiKey)
     this.phonebookInstance = new Phonebook(apiKey)
+    this.contactInstance = new Contact(apiKey)
   }
 
   /**
@@ -78,6 +81,10 @@ export class MessageHandler {
       // Method to delete phonebook
       deletePhonebook: this.phonebookInstance.deletePhonebook.bind(
         this.phonebookInstance
+      ),
+      // Method to fetch contacts
+      fetchContacts: this.contactInstance.fetchContacts.bind(
+        this.contactInstance
       ),
     }
   }

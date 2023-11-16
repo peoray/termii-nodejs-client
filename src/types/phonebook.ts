@@ -1,3 +1,5 @@
+import { BaseMetaResponse } from './constants'
+
 interface Phonebook {
   id: string
   name: string
@@ -6,28 +8,7 @@ interface Phonebook {
   last_updated: string
 }
 
-interface Links {
-  first: string
-  last: string
-  prev: string | null
-  next: string | null
-}
-
-interface Meta {
-  current_page: number
-  from: number
-  last_page: number
-  path: string
-  per_page: number
-  to: number
-  total: number
-}
-
-export interface IFetchPhonebooksResponse {
-  data: Phonebook[]
-  links: Links
-  meta: Meta
-}
+export interface IFetchPhonebooksResponse extends BaseMetaResponse<Phonebook> {}
 
 export interface IPhonebook {
   phonebook_name: string
