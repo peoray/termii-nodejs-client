@@ -1,5 +1,5 @@
 import { Contact } from './contact'
-import { IFetchContactsResponse } from '../../../types'
+import { IDeleteContactResponse, IFetchContactsResponse } from '../../../types'
 
 const contactInstance = new Contact('api-key')
 
@@ -61,6 +61,10 @@ const responseData = {
   },
 }
 
+const deleteContactResponse: IDeleteContactResponse = {
+  message: 'Contact deleted Successfully',
+}
+
 describe('Contact', () => {
   it('should fetch list of contacts', async () => {
     try {
@@ -77,6 +81,17 @@ describe('Contact', () => {
       const response = await contactInstance.createContact('12345678', payload)
 
       expect(response).toEqual(responseData)
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error)
+    }
+  })
+
+  it('should delete a contact', async () => {
+    try {
+      const contact_id = '123456'
+      const response = await contactInstance.deleteContact(contact_id)
+
+      expect(response).toEqual(deleteContactResponse)
     } catch (error) {
       expect(error).toBeInstanceOf(Error)
     }
