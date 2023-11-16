@@ -1,5 +1,9 @@
 import { TermiiCore } from '../../../api'
-import { IFetchContactsResponse } from '../../../types'
+import {
+  ICreateContact,
+  ICreateContactResponse,
+  IFetchContactsResponse,
+} from '../../../types'
 import { IAxiosStruct, handleErrors } from '../../../utils'
 
 export class Contact extends TermiiCore {
@@ -21,6 +25,25 @@ export class Contact extends TermiiCore {
       const response = await this.useRequest(requestObj)
 
       return response?.data as IFetchContactsResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
+  }
+
+  public async createContact(
+    phonebook_id: string,
+    data: ICreateContact
+  ): Promise<ICreateContactResponse> {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'POST',
+        url: `/phonebooks/${phonebook_id}/contacts`,
+        data,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as ICreateContactResponse
     } catch (error) {
       return handleErrors(error)
     }

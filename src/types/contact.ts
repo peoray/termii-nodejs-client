@@ -14,3 +14,16 @@ interface Contact {
 }
 
 export interface IFetchContactsResponse extends BaseMetaResponse<Contact> {}
+
+export interface ICreateContact {
+  phone_number: string
+  email_address: string
+  first_name: string
+  last_name: string
+  company: string
+  country_code: string
+}
+
+export interface ICreateContactResponse {
+  data: Contact
+}

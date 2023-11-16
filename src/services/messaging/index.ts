@@ -86,6 +86,10 @@ export class MessageHandler {
       fetchContacts: this.contactInstance.fetchContacts.bind(
         this.contactInstance
       ),
+      // Method to create contact
+      createContact: this.contactInstance.createContact.bind(
+        this.contactInstance
+      ),
     }
   }
 }
