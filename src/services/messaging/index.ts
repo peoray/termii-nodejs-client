@@ -4,6 +4,7 @@ import { Number } from './number/number'
 import { Template } from './template/template'
 import { Phonebook } from './phonebook/phonebook'
 import { Contact } from './contact/contact'
+import { Campaign } from './campaign/campaign'
 
 /**
  * The MessageHandler class handles message-related functionalities by providing access to message and sender ID instances.
@@ -15,6 +16,7 @@ export class MessageHandler {
   private templateInstance: Template // Instance to handle sending message with template
   private phonebookInstance: Phonebook // Instance to manage phonebooks
   private contactInstance: Contact // Instance to manage contacts
+  private campaignnstance: Campaign // Instance to manage Campaigns
 
   /**
    * Constructs a MessageHandler instance.
@@ -29,6 +31,7 @@ export class MessageHandler {
     this.templateInstance = new Template(apiKey)
     this.phonebookInstance = new Phonebook(apiKey)
     this.contactInstance = new Contact(apiKey)
+    this.campaignnstance = new Campaign(apiKey)
   }
 
   /**
@@ -93,6 +96,10 @@ export class MessageHandler {
       // Method to delete a contact
       deleteContact: this.contactInstance.deleteContact.bind(
         this.contactInstance
+      ),
+      // Method to fetch contacts
+      fetchCampaigns: this.campaignnstance.fetchCampaigns.bind(
+        this.campaignnstance
       ),
     }
   }
