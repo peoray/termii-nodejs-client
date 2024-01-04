@@ -4,6 +4,8 @@ import {
   ISendTokenResponse,
   ISendVoiceToken,
   ISendVoiceTokenResponse,
+  IMakeVoiceCall,
+  IMakeVoiceCallResponse,
 } from '../../types'
 
 jest.mock('../../api')
@@ -70,6 +72,36 @@ describe('Token class', () => {
       }
 
       const result = await tokenInstance.sendVoiceToken(data)
+
+      expect(result).toEqual({
+        code: 'ok',
+        message_id: '101974010419581212300029568',
+        pin_id: 'fad4f438-655d-399a-a50a-b93e11b41323',
+        message: 'Successfully Sent',
+        balance: 1501.7,
+        user: 'John Doe',
+      })
+    })
+
+    it('should make a voice call successfully', async () => {
+      //   Mock the useRequest method to return a successful response
+      tokenInstance.useRequest = jest.fn().mockResolvedValue({
+        data: {
+          code: 'ok',
+          message_id: '101974010419581212300029568',
+          pin_id: 'fad4f438-655d-399a-a50a-b93e11b41323',
+          message: 'Successfully Sent',
+          balance: 1501.7,
+          user: 'John Doe',
+        } as IMakeVoiceCallResponse,
+      })
+
+      const data: IMakeVoiceCall = {
+        phone_number: '2349014581910',
+        code: 33443,
+      }
+
+      const result = await tokenInstance.makeVoiceCall(data)
 
       expect(result).toEqual({
         code: 'ok',
