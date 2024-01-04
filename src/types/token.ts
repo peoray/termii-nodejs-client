@@ -1,13 +1,10 @@
-enum MessageType {
-  NUMERIC = 'NUMERIC',
-  ALPHANUMERIC = 'ALPHANUMERIC',
-}
+// import { ChannelType } from './constants'
 
 export interface ISendToken {
-  message_type: MessageType
+  message_type: 'NUMERIC' | 'ALPHANUMERIC'
   to: string
   from: string
-  channel: string
+  channel: 'dnd' | 'WhatsApp' | 'generic' | 'email'
   pin_attempts: number
   pin_time_to_live: number
   pin_length: number
