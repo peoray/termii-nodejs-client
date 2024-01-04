@@ -6,6 +6,8 @@ import {
   ISendVoiceTokenResponse,
   IMakeVoiceCall,
   IMakeVoiceCallResponse,
+  ISendEmailToken,
+  ISendEmailTokenResponse,
 } from '../../types'
 
 jest.mock('../../api')
@@ -107,6 +109,35 @@ describe('Token class', () => {
         code: 'ok',
         message_id: '101974010419581212300029568',
         pin_id: 'fad4f438-655d-399a-a50a-b93e11b41323',
+        message: 'Successfully Sent',
+        balance: 1501.7,
+        user: 'John Doe',
+      })
+    })
+
+    it('should send an email token successfully', async () => {
+      //   Mock the useRequest method to return a successful response
+      tokenInstance.useRequest = jest.fn().mockResolvedValue({
+        data: {
+          code: 'ok',
+          message_id: '101974010419581212300029568',
+          message: 'Successfully Sent',
+          balance: 1501.7,
+          user: 'John Doe',
+        } as ISendEmailTokenResponse,
+      })
+
+      const data: ISendEmailToken = {
+        email_address: 'test@test.com',
+        code: '33443',
+        email_configuration_id: 'fad4f438-655d-399a-a50a-b93e11b41323',
+      }
+
+      const result = await tokenInstance.sendEmailToken(data)
+
+      expect(result).toEqual({
+        code: 'ok',
+        message_id: '101974010419581212300029568',
         message: 'Successfully Sent',
         balance: 1501.7,
         user: 'John Doe',
