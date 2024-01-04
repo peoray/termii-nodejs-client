@@ -37,6 +37,7 @@ Nodejs SDK for [Termii](https://termii.com) messaging platform written in typesc
       - [Send a campaign](#send-a-campaign)
   - [Token API](#token-api)
     - [Send Token](#send-token)
+    - [Send Voice Token](#send-voice-token)
 - [License](#license)
 
 ## Prerequisites
@@ -433,6 +434,26 @@ console.log(response) // ISendTokenResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/send-token)
+
+#### Send Voice Token
+
+```ts
+// import the token interfaces from the sdk
+import type { ISendVoiceToken, ISendVoiceTokenResponse } from 'termii-nodejs-client';
+
+const payload: ISendVoiceToken = {
+  phone_number: '23490126727',
+  pin_attempts: 3,
+  pin_time_to_live: 1,
+  pin_length: 4,
+}
+
+const response = await termii.token.sendVoiceToken(payload)
+
+console.log(response) // ISendVoiceTokenResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/voice-token)
 
 ## License
 
