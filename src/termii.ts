@@ -1,4 +1,4 @@
-import { MessageHandler } from './services'
+import { MessageHandler, TokenHandler } from './services'
 
 /**
  * The Termii class is the main class used to access the other classes in the Termii library.
@@ -15,6 +15,7 @@ export class Termii {
    * @type {MessageHandler}
    */
   private messageInstance: MessageHandler
+  private tokenInstance: TokenHandler
 
   /**
    * Creates an instance of Termii.
@@ -24,6 +25,7 @@ export class Termii {
   constructor(public apiKey: string) {
     // Initialize the MessageHandler instance with the API key.
     this.messageInstance = new MessageHandler(apiKey)
+    this.tokenInstance = new TokenHandler(apiKey)
   }
 
   /**
@@ -35,5 +37,8 @@ export class Termii {
    */
   public get message() {
     return this.messageInstance.message
+  }
+  public get token() {
+    return this.tokenInstance.token
   }
 }
