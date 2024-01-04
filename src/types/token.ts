@@ -1,5 +1,3 @@
-// import { ChannelType } from './constants'
-
 export interface ISendToken {
   message_type: 'NUMERIC' | 'ALPHANUMERIC'
   to: string
