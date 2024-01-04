@@ -13,6 +13,7 @@ export class TokenHandler {
       sendVoiceToken: this.tokenInstance.sendVoiceToken.bind(
         this.tokenInstance
       ),
+      makeVoiceCall: this.tokenInstance.makeVoiceCall.bind(this.tokenInstance),
     }
   }
 }

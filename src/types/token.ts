@@ -29,3 +29,12 @@ export interface ISendVoiceToken {
 export interface ISendVoiceTokenResponse extends BaseResponse {
   pin_id: string
 }
+
+export interface IMakeVoiceCall {
+  phone_number: string
+  code: number
+}
+
+export interface IMakeVoiceCallResponse extends BaseResponse {
+  pin_id: string
+}
