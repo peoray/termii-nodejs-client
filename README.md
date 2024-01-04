@@ -455,6 +455,24 @@ console.log(response) // ISendVoiceTokenResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/voice-token)
 
+#### Make Voice Call
+
+```ts
+// import the token interfaces from the sdk
+import type { IMakeVoiceCall, IMakeVoiceCallResponse } from 'termii-nodejs-client';
+
+const payload: IMakeVoiceCall = {
+  phone_number: '23490126727',
+  code: 12345
+}
+
+const response = await termii.token.makeVoiceCall(payload)
+
+console.log(response) // IMakeVoiceCallResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/voice-call)
+
 ## License
 
 [MIT](https://github.com/peoray/termii-nodejs-client/blob/main/LICENSE)
