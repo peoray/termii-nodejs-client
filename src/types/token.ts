@@ -16,4 +16,5 @@ export interface ISendTokenResponse {
   pinId: string
   to: string
   smsStatus: string
+  status: number
 }
