@@ -1,6 +1,6 @@
-# Termii Node Client
+# Termii Nodejs Client
 
-![npm (scoped)](https://img.shields.io/npm/v/termii-nodejs-client?color=%23FF7B37&style=flat-square) ![npm](https://img.shields.io/npm/dm/termii-nodejs-client?style=flat-square) ![Twitter Follow](https://img.shields.io/twitter/follow/peoray_?style=social)
+![npm (scoped)](https://img.shields.io/npm/v/termii-nodejs-client?color=%23FF7B37&style=flat-square) ![npm](https://img.shields.io/npm/dm/termii-nodejs-client?style=flat-square)
 
 Nodejs SDK for [Termii](https://termii.com) messaging platform written in typescript
 
@@ -11,14 +11,30 @@ Nodejs SDK for [Termii](https://termii.com) messaging platform written in typesc
 - [Installation](#installation)
 - [Usage](#usage)
 - [Available Services exposed by the SDK](#available-services-exposed-by-the-sdk)
-  - [Sender ID](#sender-id)
+  - [Sender ID API](#sender-id-api)
     - [Fetch Sender ID](#fetch-sender-id)
     - [Create Sender ID](#create-sender-id)
-  - [Messaging](#messaging)
+  - [Messaging API](#messaging-api)
     - [Send Message](#send-message)
     - [Send Bulk Message](#send-bulk-message)
-  - [Number](#number)
+  - [Number API](#number-api)
     - [Send Message with Number](#send-message-with-number)
+  - [Templates API](#templates-api)
+    - [Device Template (Send Message with Template)](#device-template-send-message-with-template)
+  - [Campaign API](#campaign-api)
+    - [Phonebooks](#phonebooks)
+      - [Fetch Phonebooks](#fetch-phonebooks)
+      - [Create Phonebook](#create-phonebook)
+      - [Update Phonebook](#update-phonebook)
+      - [Delete Phonebook](#delete-phonebook)
+    - [Contacts](#contacts)
+      - [Fetch contacts by phonebook ID](#fetch-contacts-by-phonebook-id)
+      - [Add single contact to phonebook](#add-single-contact-to-phonebook)
+      - [Delete contact](#delete-contact)
+    - [Campaign](#campaign)
+      - [Fetch campaigns](#fetch-campaigns)
+      - [Fetch campaign history](#fetch-campaign-history)
+      - [Send a campaign](#send-a-campaign)
 - [License](#license)
 
 ## Prerequisites
@@ -206,6 +222,8 @@ console.log(response) // IDeviceTemplateResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/templates#device-template)
 
+## Campaign API
+
 ### Phonebooks
 
 Create, view & manage phonebooks using these APIs. Each phonebook can be identified by a unique ID, which makes it easier to edit or delete a phonebook.
@@ -290,7 +308,7 @@ console.log(response) // IFetchContactsResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/contacts#fetch-contacts-by-phonebook-id)
 
-#### Add single contacts to phonebook
+#### Add single contact to phonebook
 
 ```ts
 // import the contact interfaces from the sdk
@@ -389,3 +407,5 @@ Find more details about the parameters and response for the above method [here](
 ## License
 
 [MIT](https://github.com/peoray/termii-nodejs-client/blob/main/LICENSE)
+
+[Back to Top](#table-of-content)
