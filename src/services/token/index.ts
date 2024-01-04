@@ -10,6 +10,9 @@ export class TokenHandler {
   public get token() {
     return {
       sendToken: this.tokenInstance.sendToken.bind(this.tokenInstance),
+      sendVoiceToken: this.tokenInstance.sendVoiceToken.bind(
+        this.tokenInstance
+      ),
     }
   }
 }

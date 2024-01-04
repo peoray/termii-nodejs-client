@@ -1,5 +1,10 @@
 import { TermiiCore } from '../../api'
-import { ISendToken, ISendTokenResponse } from '../../types'
+import {
+  ISendToken,
+  ISendTokenResponse,
+  ISendVoiceToken,
+  ISendVoiceTokenResponse,
+} from '../../types'
 import { IAxiosStruct, handleErrors } from '../../utils'
 
 export class Token extends TermiiCore {
@@ -18,6 +23,24 @@ export class Token extends TermiiCore {
       const response = await this.useRequest(requestObj)
 
       return response?.data as ISendTokenResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
+  }
+
+  public async sendVoiceToken(
+    data: ISendVoiceToken
+  ): Promise<ISendVoiceTokenResponse> {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'POST',
+        url: `/sms/otp/send/voice`,
+        data,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as ISendVoiceTokenResponse
     } catch (error) {
       return handleErrors(error)
     }

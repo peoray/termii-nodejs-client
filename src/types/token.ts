@@ -1,3 +1,5 @@
+import { BaseResponse } from './constants'
+
 export interface ISendToken {
   message_type: 'NUMERIC' | 'ALPHANUMERIC'
   to: string
@@ -15,4 +17,15 @@ export interface ISendTokenResponse {
   to: string
   smsStatus: string
   status: number
+}
+
+export interface ISendVoiceToken {
+  phone_number: string
+  pin_attempts: number
+  pin_time_to_live: number
+  pin_length: number
+}
+
+export interface ISendVoiceTokenResponse extends BaseResponse {
+  pinId: string
 }
