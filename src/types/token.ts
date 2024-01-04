@@ -38,3 +38,11 @@ export interface IMakeVoiceCall {
 export interface IMakeVoiceCallResponse extends BaseResponse {
   pin_id: string
 }
+
+export interface ISendEmailToken {
+  email_address: string
+  code: string
+  email_configuration_id: string
+}
+
+export interface ISendEmailTokenResponse extends BaseResponse {}

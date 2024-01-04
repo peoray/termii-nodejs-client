@@ -6,6 +6,8 @@ import {
   ISendVoiceTokenResponse,
   IMakeVoiceCall,
   IMakeVoiceCallResponse,
+  ISendEmailToken,
+  ISendEmailTokenResponse,
 } from '../../types'
 import { IAxiosStruct, handleErrors } from '../../utils'
 
@@ -61,6 +63,24 @@ export class Token extends TermiiCore {
       const response = await this.useRequest(requestObj)
 
       return response?.data as IMakeVoiceCallResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
+  }
+
+  public async sendEmailToken(
+    data: ISendEmailToken
+  ): Promise<ISendEmailTokenResponse> {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'POST',
+        url: `/email/otp/send`,
+        data,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as ISendEmailTokenResponse
     } catch (error) {
       return handleErrors(error)
     }

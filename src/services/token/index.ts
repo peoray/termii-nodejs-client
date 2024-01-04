@@ -14,6 +14,9 @@ export class TokenHandler {
         this.tokenInstance
       ),
       makeVoiceCall: this.tokenInstance.makeVoiceCall.bind(this.tokenInstance),
+      sendEmailToken: this.tokenInstance.sendEmailToken.bind(
+        this.tokenInstance
+      ),
     }
   }
 }
