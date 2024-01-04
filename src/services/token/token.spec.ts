@@ -1,5 +1,10 @@
 import { Token } from './token'
-import { ISendToken, ISendTokenResponse } from '../../types'
+import {
+  ISendToken,
+  ISendTokenResponse,
+  ISendVoiceToken,
+  ISendVoiceTokenResponse,
+} from '../../types'
 
 jest.mock('../../api')
 describe('Token class', () => {
@@ -16,7 +21,7 @@ describe('Token class', () => {
       tokenInstance.useRequest = jest.fn().mockResolvedValue({
         data: {
           pinId: '123456',
-          to: '2349015581911',
+          to: '2349014581910',
           smsStatus: 'sent',
           status: 200,
         } as ISendTokenResponse,
@@ -24,7 +29,7 @@ describe('Token class', () => {
 
       const data: ISendToken = {
         message_type: 'NUMERIC',
-        to: '2349015581911',
+        to: '2349014581910',
         from: 'Acme',
         channel: 'generic',
         pin_attempts: 3,
@@ -38,9 +43,41 @@ describe('Token class', () => {
 
       expect(result).toEqual({
         pinId: '123456',
-        to: '2349015581911',
+        to: '2349014581910',
         smsStatus: 'sent',
         status: 200,
+      })
+    })
+
+    it('should send a voice token successfully', async () => {
+      //   Mock the useRequest method to return a successful response
+      tokenInstance.useRequest = jest.fn().mockResolvedValue({
+        data: {
+          code: 'ok',
+          message_id: '101974010419581212300029568',
+          pin_id: 'fad4f438-655d-399a-a50a-b93e11b41323',
+          message: 'Successfully Sent',
+          balance: 1501.7,
+          user: 'John Doe',
+        } as ISendVoiceTokenResponse,
+      })
+
+      const data: ISendVoiceToken = {
+        phone_number: '2349014581910',
+        pin_attempts: 3,
+        pin_time_to_live: 1,
+        pin_length: 4,
+      }
+
+      const result = await tokenInstance.sendVoiceToken(data)
+
+      expect(result).toEqual({
+        code: 'ok',
+        message_id: '101974010419581212300029568',
+        pin_id: 'fad4f438-655d-399a-a50a-b93e11b41323',
+        message: 'Successfully Sent',
+        balance: 1501.7,
+        user: 'John Doe',
       })
     })
 
@@ -52,7 +89,7 @@ describe('Token class', () => {
 
       const data: ISendToken = {
         message_type: 'NUMERIC',
-        to: '2349015581911',
+        to: '2349014581910',
         from: 'Acme',
         channel: 'generic',
         pin_attempts: 3,

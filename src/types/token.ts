@@ -27,5 +27,5 @@ export interface ISendVoiceToken {
 }
 
 export interface ISendVoiceTokenResponse extends BaseResponse {
-  pinId: string
+  pin_id: string
 }
