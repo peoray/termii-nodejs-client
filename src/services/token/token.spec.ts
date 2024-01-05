@@ -10,6 +10,8 @@ import {
   ISendEmailTokenResponse,
   IVerifyTokenResponse,
   IVerifyToken,
+  IInAppTokenResponse,
+  IInAppToken,
 } from '../../types'
 
 jest.mock('../../api')
@@ -167,6 +169,41 @@ describe('Token class', () => {
         pin_id: 'c8dcd048-5e7f-4347-8c89-4470c3af0b',
         verified: true,
         msisdn: '2348109077743',
+      })
+    })
+
+    it('should return otp tokens successfully', async () => {
+      //   Mock the useRequest method to return a successful response
+      tokenInstance.useRequest = jest.fn().mockResolvedValue({
+        data: {
+          status: 'success',
+          data: {
+            pin_id: 'db34d5ce-9bd4-4f10-b8ec-8ee402ccd0',
+            otp: '522726',
+            phone_number: '2348109077743',
+            phone_number_other: 'Termii',
+          },
+        } as IInAppTokenResponse,
+      })
+
+      const data: IInAppToken = {
+        pin_type: 'NUMERIC',
+        phone_number: '2348109477743',
+        pin_attempts: 3,
+        pin_time_to_live: 0,
+        pin_length: 4,
+      }
+
+      const result = await tokenInstance.inAppToken(data)
+
+      expect(result).toEqual({
+        status: 'success',
+        data: {
+          pin_id: 'db34d5ce-9bd4-4f10-b8ec-8ee402ccd0',
+          otp: '522726',
+          phone_number: '2348109077743',
+          phone_number_other: 'Termii',
+        },
       })
     })
 
