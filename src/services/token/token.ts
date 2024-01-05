@@ -10,6 +10,8 @@ import {
   ISendEmailTokenResponse,
   IVerifyToken,
   IVerifyTokenResponse,
+  IInAppToken,
+  IInAppTokenResponse,
 } from '../../types'
 import { IAxiosStruct, handleErrors } from '../../utils'
 
@@ -99,6 +101,22 @@ export class Token extends TermiiCore {
       const response = await this.useRequest(requestObj)
 
       return response?.data as IVerifyTokenResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
+  }
+
+  public async inAppToken(data: IInAppToken): Promise<IInAppTokenResponse> {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'POST',
+        url: `/sms/otp/generate`,
+        data,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as IInAppTokenResponse
     } catch (error) {
       return handleErrors(error)
     }

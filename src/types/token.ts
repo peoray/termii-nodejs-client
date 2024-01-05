@@ -57,3 +57,23 @@ export interface IVerifyTokenResponse {
   verified: boolean
   msisdn: string
 }
+
+export interface IInAppToken {
+  pin_type: 'NUMERIC' | 'ALPHANUMERIC'
+  phone_number: string
+  pin_attempts: number
+  pin_time_to_live: number
+  pin_length: number
+}
+
+interface IInAppTokenData {
+  pin_id: string
+  otp: string
+  phone_number: string
+  phone_number_other: string
+}
+
+export interface IInAppTokenResponse {
+  status: string
+  data: IInAppTokenData
+}

@@ -18,6 +18,7 @@ export class TokenHandler {
         this.tokenInstance
       ),
       verifyToken: this.tokenInstance.verifyToken.bind(this.tokenInstance),
+      inAppToken: this.tokenInstance.inAppToken.bind(this.tokenInstance),
     }
   }
 }
