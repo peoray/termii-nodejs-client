@@ -8,6 +8,8 @@ import {
   IMakeVoiceCallResponse,
   ISendEmailToken,
   ISendEmailTokenResponse,
+  IVerifyToken,
+  IVerifyTokenResponse,
 } from '../../types'
 import { IAxiosStruct, handleErrors } from '../../utils'
 
@@ -81,6 +83,22 @@ export class Token extends TermiiCore {
       const response = await this.useRequest(requestObj)
 
       return response?.data as ISendEmailTokenResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
+  }
+
+  public async verifyToken(data: IVerifyToken): Promise<IVerifyTokenResponse> {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'POST',
+        url: `/sms/otp/verify`,
+        data,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as IVerifyTokenResponse
     } catch (error) {
       return handleErrors(error)
     }

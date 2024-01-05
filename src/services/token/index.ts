@@ -17,6 +17,7 @@ export class TokenHandler {
       sendEmailToken: this.tokenInstance.sendEmailToken.bind(
         this.tokenInstance
       ),
+      verifyToken: this.tokenInstance.verifyToken.bind(this.tokenInstance),
     }
   }
 }

@@ -46,3 +46,14 @@ export interface ISendEmailToken {
 }
 
 export interface ISendEmailTokenResponse extends BaseResponse {}
+
+export interface IVerifyToken {
+  pin_id: string
+  pin: string
+}
+
+export interface IVerifyTokenResponse {
+  pin_id: string
+  verified: boolean
+  msisdn: number
+}
