@@ -55,5 +55,5 @@ export interface IVerifyToken {
 export interface IVerifyTokenResponse {
   pin_id: string
   verified: boolean
-  msisdn: number
+  msisdn: string
 }

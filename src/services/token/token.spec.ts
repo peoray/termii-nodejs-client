@@ -8,6 +8,8 @@ import {
   IMakeVoiceCallResponse,
   ISendEmailToken,
   ISendEmailTokenResponse,
+  IVerifyTokenResponse,
+  IVerifyToken,
 } from '../../types'
 
 jest.mock('../../api')
@@ -141,6 +143,30 @@ describe('Token class', () => {
         message: 'Successfully Sent',
         balance: 1501.7,
         user: 'John Doe',
+      })
+    })
+
+    it('should verify token successfully', async () => {
+      //   Mock the useRequest method to return a successful response
+      tokenInstance.useRequest = jest.fn().mockResolvedValue({
+        data: {
+          pin_id: 'c8dcd048-5e7f-4347-8c89-4470c3af0b',
+          verified: true,
+          msisdn: '2348109077743',
+        } as IVerifyTokenResponse,
+      })
+
+      const data: IVerifyToken = {
+        pin_id: 'c8dcd048-5e7f-4347-8c89-4470c3af0b',
+        pin: '15017',
+      }
+
+      const result = await tokenInstance.verifyToken(data)
+
+      expect(result).toEqual({
+        pin_id: 'c8dcd048-5e7f-4347-8c89-4470c3af0b',
+        verified: true,
+        msisdn: '2348109077743',
       })
     })
 
