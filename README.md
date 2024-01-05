@@ -37,7 +37,9 @@ Nodejs SDK for [Termii](https://termii.com) messaging platform written in typesc
       - [Send a campaign](#send-a-campaign)
   - [Token API](#token-api)
     - [Send Token](#send-token)
-    - [Send Voice Token](#send-voice-token)
+    - [Voice Token](#voice-token)
+    - [Voice Call](#voice-call)
+    - [Email Token](#email-token)
 - [License](#license)
 
 ## Prerequisites
@@ -435,7 +437,7 @@ console.log(response) // ISendTokenResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/send-token)
 
-#### Send Voice Token
+#### Voice Token
 
 ```ts
 // import the token interfaces from the sdk
@@ -455,7 +457,7 @@ console.log(response) // ISendVoiceTokenResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/voice-token)
 
-#### Make Voice Call
+#### Voice Call
 
 ```ts
 // import the token interfaces from the sdk
@@ -472,6 +474,25 @@ console.log(response) // IMakeVoiceCallResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/voice-call)
+
+#### Email Token
+
+```ts
+// import the token interfaces from the sdk
+import type { sendEmailToken, ISendEmailTokenResponse } from 'termii-nodejs-client';
+
+const payload: sendEmailToken = {
+  email_address: 'test@test.com',
+  code: '33443',
+  email_configuration_id: 'fad4f438-655d-399a-a50a-b93e11b41323'
+}
+
+const response = await termii.token.sendEmailToken(payload)
+
+console.log(response) // ISendEmailTokenResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/email-token)
 
 ## License
 
