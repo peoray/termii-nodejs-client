@@ -43,7 +43,6 @@ export class Campaign extends TermiiCore {
 
       return response?.data as IFetchCampaignHistoryResponse
     } catch (error) {
-      console.error(error)
       return handleErrors(error)
     }
   }

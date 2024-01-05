@@ -35,6 +35,13 @@ Nodejs SDK for [Termii](https://termii.com) messaging platform written in typesc
       - [Fetch campaigns](#fetch-campaigns)
       - [Fetch campaign history](#fetch-campaign-history)
       - [Send a campaign](#send-a-campaign)
+  - [Token API](#token-api)
+    - [Send Token](#send-token)
+    - [Voice Token](#voice-token)
+    - [Voice Call](#voice-call)
+    - [Email Token](#email-token)
+    - [Verify Token](#verify-token)
+    - [In App Token](#in-app-token)
 - [License](#license)
 
 ## Prerequisites
@@ -136,7 +143,7 @@ This API allows businesses send text messages to their customers across differen
 import type { ISendMessage, ISendMessageResponse } from 'termii-nodejs-client';
 
 const payload: ISendMessage = {
-  to: "2347880234567",
+  to: "23490126727",
   from: "talert",
   sms: "Hi there, testing Termii",
   type: "plain",
@@ -161,7 +168,7 @@ Find more details about the parameters and response for the above method [here](
 import type { ISendBulkMessage, ISendBulkMessageResponse } from 'termii-nodejs-client';
 
 const payload: ISendBulkMessage = {
-  to: ["23490555546", "23423490126999","23490555546"],
+  to: ["23490126727", "23490126728","23490126729"],
   from: "talert",
   sms: "Hi there, testing Termii",
   type: "plain",
@@ -185,7 +192,7 @@ This allows businesses send messages to customers using Termii's auto-generated 
 import type { ISendMessageWithNumber, ISendMessageWithNumberResponse } from 'termii-nodejs-client';
 
 const payload: ISendMessage = {
-  to: "23490555546",
+  to: "23490126727",
   sms: "Hi there, testing Termii"
 }
 
@@ -206,7 +213,7 @@ This helps businesses set a template for the one-time-passwords (pins) sent to t
 import type { IDeviceTemplate, IDeviceTemplateResponse } from 'termii-nodejs-client';
 
 const payload: IDeviceTemplate = {
-  phone_number: '+1234567890',
+  phone_number: '23490126727',
   device_id: 'device123',
   template_id: 'template456',
   data: {
@@ -315,7 +322,7 @@ Find more details about the parameters and response for the above method [here](
 import type { ICreateContact, ICreateContactResponse } from 'termii-nodejs-client';
 
 const payload: ICreateContact = {
-  phone_number: '8123696237',
+  phone_number: '812369234901267276237',
   email_address: 'test@gmail.com',
   first_name: 'test',
   last_name: 'contact',
@@ -403,6 +410,130 @@ console.log(response) // ISendCampaignResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/campaign#send-a-campaign)
 
+### Token API
+
+The Token API allows businesses generate, send and verify one-time-passwords.
+
+#### Send Token
+
+```ts
+// import the token interfaces from the sdk
+import type { ISendToken, ISendTokenResponse } from 'termii-nodejs-client';
+
+const payload: ISendToken = {
+  message_type: 'NUMERIC',
+  to: '23490126727',
+  from: 'Acme',
+  channel: 'generic',
+  pin_attempts: 3,
+  pin_time_to_live: 1,
+  pin_length: 4,
+  pin_placeholder: '< 1234 >',
+  message_text: 'Your verification code is 1234',
+}
+
+const response = await termii.token.sendToken(payload)
+
+console.log(response) // ISendTokenResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/send-token)
+
+#### Voice Token
+
+```ts
+// import the token interfaces from the sdk
+import type { ISendVoiceToken, ISendVoiceTokenResponse } from 'termii-nodejs-client';
+
+const payload: ISendVoiceToken = {
+  phone_number: '23490126727',
+  pin_attempts: 3,
+  pin_time_to_live: 1,
+  pin_length: 4,
+}
+
+const response = await termii.token.sendVoiceToken(payload)
+
+console.log(response) // ISendVoiceTokenResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/voice-token)
+
+#### Voice Call
+
+```ts
+// import the token interfaces from the sdk
+import type { IMakeVoiceCall, IMakeVoiceCallResponse } from 'termii-nodejs-client';
+
+const payload: IMakeVoiceCall = {
+  phone_number: '23490126727',
+  code: 12345
+}
+
+const response = await termii.token.makeVoiceCall(payload)
+
+console.log(response) // IMakeVoiceCallResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/voice-call)
+
+#### Email Token
+
+```ts
+// import the token interfaces from the sdk
+import type { sendEmailToken, ISendEmailTokenResponse } from 'termii-nodejs-client';
+
+const payload: sendEmailToken = {
+  email_address: 'test@test.com',
+  code: '33443',
+  email_configuration_id: 'fad4f438-655d-399a-a50a-b93e11b41323'
+}
+
+const response = await termii.token.sendEmailToken(payload)
+
+console.log(response) // ISendEmailTokenResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/email-token)
+
+#### Verify Token
+
+```ts
+// import the token interfaces from the sdk
+import type { IVerifyToken, IVerifyTokenResponse } from 'termii-nodejs-client';
+
+const payload: IVerifyToken = {
+  pin_id: 'c8dcd048-5e7f-4347-8c89-4470c3af0b',
+  pin: '15017',
+}
+
+const response = await termii.token.verifyToken(payload)
+
+console.log(response) // IVerifyTokenResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/verify-token)
+
+#### In App Token
+
+```ts
+// import the token interfaces from the sdk
+import type { IInAppToken, IInAppTokenResponse } from 'termii-nodejs-client';
+
+const payload: IInAppToken = {
+  pin_type: 'NUMERIC',
+  phone_number: '2348109477743',
+  pin_attempts: 3,
+  pin_time_to_live: 0,
+  pin_length: 4,
+}
+
+const response = await termii.token.inAppToken(payload)
+
+console.log(response) // IInAppTokenResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/in-app-token)
 
 ## License
 

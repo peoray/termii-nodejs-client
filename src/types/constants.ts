@@ -32,3 +32,5 @@ export interface BaseMetaResponse<T> {
 export interface MessageResponse {
   message: string
 }
+
+export type ChannelType = 'dnd' | 'WhatsApp' | 'generic' | 'email'
