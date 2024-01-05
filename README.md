@@ -41,6 +41,7 @@ Nodejs SDK for [Termii](https://termii.com) messaging platform written in typesc
     - [Voice Call](#voice-call)
     - [Email Token](#email-token)
     - [Verify Token](#verify-token)
+    - [In App Token](#in-app-token)
 - [License](#license)
 
 ## Prerequisites
@@ -512,6 +513,27 @@ console.log(response) // IVerifyTokenResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/verify-token)
+
+#### In App Token
+
+```ts
+// import the token interfaces from the sdk
+import type { IInAppToken, IInAppTokenResponse } from 'termii-nodejs-client';
+
+const payload: IInAppToken = {
+  pin_type: 'NUMERIC',
+  phone_number: '2348109477743',
+  pin_attempts: 3,
+  pin_time_to_live: 0,
+  pin_length: 4,
+}
+
+const response = await termii.token.inAppToken(payload)
+
+console.log(response) // IInAppTokenResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/in-app-token)
 
 ## License
 
