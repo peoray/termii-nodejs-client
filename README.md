@@ -42,6 +42,8 @@ Nodejs SDK for [Termii](https://termii.com) messaging platform written in typesc
     - [Email Token](#email-token)
     - [Verify Token](#verify-token)
     - [In App Token](#in-app-token)
+  - [Insights API](#insights-api)
+    - [Balance](#balance)
 - [License](#license)
 
 ## Prerequisites
@@ -534,6 +536,21 @@ console.log(response) // IInAppTokenResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/in-app-token)
+
+### Insights API
+
+#### Balance
+
+```ts
+// import the insights interfaces from the sdk
+import type { IGetBalanceResponse } from 'termii-nodejs-client';
+
+const response = await termii.insights.getBalance()
+
+console.log(response) // IGetBalanceResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/balance)
 
 ## License
 
