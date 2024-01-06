@@ -552,6 +552,23 @@ console.log(response) // IGetBalanceResponse
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/balance)
 
+#### Search
+
+```ts
+// import the insights interfaces from the sdk
+import type { ISearchPayload, ISearchResponse } from 'termii-nodejs-client';
+
+const payload: ISearchPayload = {
+  phone_number: '2348109477743',
+}
+
+const response = await termii.insights.search(payload)
+
+console.log(response) // ISearchResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/search)
+
 ## License
 
 [MIT](https://github.com/peoray/termii-nodejs-client/blob/main/LICENSE)
