@@ -10,9 +10,9 @@ export interface ISearchPayload {
 
 export interface ISearchResponse {
   number: string
-  message: string
+  message?: string
   status: string
-  dnd_active: boolean
+  dnd_active?: boolean
   network: string
   network_code: string
 }
