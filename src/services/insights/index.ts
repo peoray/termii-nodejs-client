@@ -10,6 +10,7 @@ export class InsightsHandler {
   public get insights() {
     return {
       getBalance: this.insigntsInstance.getBalance.bind(this.insigntsInstance),
+      search: this.insigntsInstance.search.bind(this.insigntsInstance),
     }
   }
 }
