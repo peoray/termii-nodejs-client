@@ -1,5 +1,9 @@
 import { Insights } from './insights'
-import { IGetBalanceResponse, ISearchResponse } from '../../types'
+import {
+  IGetBalanceResponse,
+  ISearchResponse,
+  IStatusResponse,
+} from '../../types'
 
 jest.mock('../../api')
 describe('Token class', () => {
@@ -29,7 +33,7 @@ describe('Token class', () => {
       })
     })
 
-    it('should search phone numbeer successfully', async () => {
+    it('should search phone number successfully', async () => {
       insightsInstance.useRequest = jest.fn().mockResolvedValue({
         data: {
           number: '2348139456675',
@@ -48,6 +52,65 @@ describe('Token class', () => {
         status: 'DND not active on phone number',
         network: '64530',
         network_code: 'MTN Nigeria',
+      })
+    })
+
+    it('should detect a phone number successfully', async () => {
+      insightsInstance.useRequest = jest.fn().mockResolvedValue({
+        data: {
+          result: [
+            {
+              routeDetail: {
+                number: '2348753243651',
+                ported: 0,
+              },
+              countryDetail: {
+                countryCode: '234',
+                mobileCountryCode: '621',
+                iso: 'NG',
+              },
+              operatorDetail: {
+                operatorCode: 'ANG',
+                operatorName: 'Airtel Nigeria',
+                mobileNumberCode: '20',
+                mobileRoutingCode: '41',
+                carrierIdentificationCode: '23433',
+                lineType: 'Mobile',
+              },
+              status: 200,
+            },
+          ],
+        } as IStatusResponse,
+      })
+
+      const result = await insightsInstance.getStatus({
+        phone_number: '23409011223344',
+        country_code: 'NG',
+      })
+
+      expect(result).toEqual({
+        result: [
+          {
+            routeDetail: {
+              number: '2348753243651',
+              ported: 0,
+            },
+            countryDetail: {
+              countryCode: '234',
+              mobileCountryCode: '621',
+              iso: 'NG',
+            },
+            operatorDetail: {
+              operatorCode: 'ANG',
+              operatorName: 'Airtel Nigeria',
+              mobileNumberCode: '20',
+              mobileRoutingCode: '41',
+              carrierIdentificationCode: '23433',
+              lineType: 'Mobile',
+            },
+            status: 200,
+          },
+        ],
       })
     })
   })
