@@ -42,6 +42,11 @@ Nodejs SDK for [Termii](https://termii.com) messaging platform written in typesc
     - [Email Token](#email-token)
     - [Verify Token](#verify-token)
     - [In App Token](#in-app-token)
+  - [Insights API](#insights-api)
+    - [Balance](#balance)
+    - [Search](#search)
+    - [Status](#status)
+    - [History](#history)
 - [License](#license)
 
 ## Prerequisites
@@ -81,11 +86,8 @@ import { Termii } from 'termii-nodejs-client';
 const { Termii } = require('termii-nodejs-client')
 
 const termii = new Termii('YOUR_API_KEY');
-```
 
-Instantiate the Termii class
-
-```ts
+// Instantiate the Termii class
 const termii = new Termii('YOUR_API_KEY');
 ```
 
@@ -534,6 +536,76 @@ console.log(response) // IInAppTokenResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/in-app-token)
+
+### Insights API
+
+#### Balance
+
+```ts
+// import the insights interfaces from the sdk
+import type { IGetBalanceResponse } from 'termii-nodejs-client';
+
+const response = await termii.insights.getBalance()
+
+console.log(response) // IGetBalanceResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/balance)
+
+#### Search
+
+```ts
+// import the insights interfaces from the sdk
+import type { ISearchPayload, ISearchResponse } from 'termii-nodejs-client';
+
+const payload: ISearchPayload = {
+  phone_number: '2348109477743',
+}
+
+const response = await termii.insights.search(payload)
+
+console.log(response) // ISearchResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/search)
+
+#### Status
+
+```ts
+// import the insights interfaces from the sdk
+import type { IStatusPayload, IStatusResponse } from 'termii-nodejs-client';
+
+const payload: IStatusPayload = {
+  phone_number: '2348109477743',
+  country_code: "NG"
+}
+
+const response = await termii.insights.getStatus(payload)
+
+console.log(response) // IStatusResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/status)
+
+#### History
+
+```ts
+// import the insights interfaces from the sdk
+import type { IHistoryPayload, IHistoryResponse } from 'termii-nodejs-client';
+
+// to get the history of the messages
+const response = await termii.insights.getHistory()
+
+// to get the history of a single message
+const payload: IHistoryPayload = {
+  message_id: '5508751839629937023',
+}
+const response = await termii.insights.getHistory(payload)
+
+console.log(response) // IHistoryResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/history)
 
 ## License
 
