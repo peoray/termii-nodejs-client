@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import { IAxiosStruct, BaseError, BASE_URL, handleErrors } from './utils'
+import { IAxiosStruct, BaseError, handleErrors } from './utils'
 
 /**
  * Represents the TermiiCore class, which provides an interface for making HTTP requests using Axios with a specific API key.
@@ -19,7 +19,7 @@ export class TermiiCore {
     this.apiKey = apiKey
     // Create an Axios instance with a base URL and common headers.
     this.request = axios.create({
-      baseURL: BASE_URL,
+      baseURL: 'https://api.ng.termii.com/api',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
