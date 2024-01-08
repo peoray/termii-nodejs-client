@@ -44,6 +44,8 @@ Nodejs SDK for [Termii](https://termii.com) messaging platform written in typesc
     - [In App Token](#in-app-token)
   - [Insights API](#insights-api)
     - [Balance](#balance)
+    - [Search](#search)
+    - [Status](#status)
 - [License](#license)
 
 ## Prerequisites
@@ -83,11 +85,8 @@ import { Termii } from 'termii-nodejs-client';
 const { Termii } = require('termii-nodejs-client')
 
 const termii = new Termii('YOUR_API_KEY');
-```
 
-Instantiate the Termii class
-
-```ts
+// Instantiate the Termii class
 const termii = new Termii('YOUR_API_KEY');
 ```
 
@@ -568,6 +567,24 @@ console.log(response) // ISearchResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/search)
+
+#### Status
+
+```ts
+// import the insights interfaces from the sdk
+import type { IStautsPayload, IStatusResponse } from 'termii-nodejs-client';
+
+const payload: IStautsPayload = {
+  phone_number: '2348109477743',
+  country_code: "NG"
+}
+
+const response = await termii.insights.getStatus(payload)
+
+console.log(response) // IStatusResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/status)
 
 ## License
 
