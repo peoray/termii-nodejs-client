@@ -46,6 +46,7 @@ Nodejs SDK for [Termii](https://termii.com) messaging platform written in typesc
     - [Balance](#balance)
     - [Search](#search)
     - [Status](#status)
+    - [History](#history)
 - [License](#license)
 
 ## Prerequisites
@@ -572,9 +573,9 @@ Find more details about the parameters and response for the above method [here](
 
 ```ts
 // import the insights interfaces from the sdk
-import type { IStautsPayload, IStatusResponse } from 'termii-nodejs-client';
+import type { IStatusPayload, IStatusResponse } from 'termii-nodejs-client';
 
-const payload: IStautsPayload = {
+const payload: IStatusPayload = {
   phone_number: '2348109477743',
   country_code: "NG"
 }
@@ -585,6 +586,26 @@ console.log(response) // IStatusResponse
 ```
 
 Find more details about the parameters and response for the above method [here](https://developers.termii.com/status)
+
+#### History
+
+```ts
+// import the insights interfaces from the sdk
+import type { IHistoryPayload, IHistoryResponse } from 'termii-nodejs-client';
+
+// to get the history of the messages
+const response = await termii.insights.getHistory()
+
+// to get the history of a single message
+const payload: IHistoryPayload = {
+  message_id: '5508751839629937023',
+}
+const response = await termii.insights.getHistory(payload)
+
+console.log(response) // IHistoryResponse
+```
+
+Find more details about the parameters and response for the above method [here](https://developers.termii.com/history)
 
 ## License
 
