@@ -47,7 +47,7 @@ export interface IStatusResponse {
 }
 
 export interface IHistoryPayload {
-  message_id: string
+  message_id?: string
 }
 
 export interface IHistoryResponse {

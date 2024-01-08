@@ -1,6 +1,7 @@
 import { Insights } from './insights'
 import {
   IGetBalanceResponse,
+  IHistoryResponse,
   ISearchResponse,
   IStatusResponse,
 } from '../../types'
@@ -112,6 +113,48 @@ describe('Token class', () => {
           },
         ],
       })
+    })
+
+    it('should return reports for message successfully', async () => {
+      insightsInstance.useRequest = jest.fn().mockResolvedValue({
+        data: [
+          {
+            sender: 'N-Alert',
+            receiver: '233257883990',
+            message: 'New year in a bit',
+            amount: 1,
+            reroute: 0,
+            status: 'DND Active on Phone Number',
+            sms_type: 'plain',
+            send_by: 'sender',
+            media_url: null,
+            message_id: '5508751839629937023',
+            notify_url: null,
+            notify_id: null,
+            created_at: '2020-08-15 12:36:42',
+          },
+        ],
+      })
+
+      const result = await insightsInstance.getHistory()
+
+      expect(result).toEqual([
+        {
+          sender: 'N-Alert',
+          receiver: '233257883990',
+          message: 'New year in a bit',
+          amount: 1,
+          reroute: 0,
+          status: 'DND Active on Phone Number',
+          sms_type: 'plain',
+          send_by: 'sender',
+          media_url: null,
+          message_id: '5508751839629937023',
+          notify_url: null,
+          notify_id: null,
+          created_at: '2020-08-15 12:36:42',
+        },
+      ])
     })
   })
 })

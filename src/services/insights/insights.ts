@@ -62,11 +62,11 @@ export class Insights extends TermiiCore {
     }
   }
 
-  public async getHistory(data: IHistoryPayload): Promise<IHistoryResponse[]> {
+  public async getHistory(data?: IHistoryPayload): Promise<IHistoryResponse[]> {
     try {
       const requestObj: IAxiosStruct = {
         method: 'GET',
-        url: `/sms/inbox/?message_id=${data.message_id}`,
+        url: `/sms/inbox/?message_id=${data?.message_id}`,
         data,
       }
 
