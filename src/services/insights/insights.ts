@@ -4,7 +4,9 @@ import {
   ISearchPayload,
   ISearchResponse,
   IStatusResponse,
-  IStautsPayload,
+  IStatusPayload,
+  IHistoryPayload,
+  IHistoryResponse,
 } from '../../types'
 import { IAxiosStruct, handleErrors } from '../../utils'
 
@@ -44,7 +46,7 @@ export class Insights extends TermiiCore {
     }
   }
 
-  public async getStatus(data: IStautsPayload): Promise<IStatusResponse> {
+  public async getStatus(data: IStatusPayload): Promise<IStatusResponse> {
     try {
       const requestObj: IAxiosStruct = {
         method: 'GET',
@@ -55,6 +57,22 @@ export class Insights extends TermiiCore {
       const response = await this.useRequest(requestObj)
 
       return response?.data as IStatusResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
+  }
+
+  public async getHistory(data: IHistoryPayload): Promise<IHistoryResponse[]> {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'GET',
+        url: `/sms/inbox/?message_id=${data.message_id}`,
+        data,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as IHistoryResponse[]
     } catch (error) {
       return handleErrors(error)
     }

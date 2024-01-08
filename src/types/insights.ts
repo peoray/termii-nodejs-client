@@ -17,12 +17,12 @@ export interface ISearchResponse {
   network_code: string
 }
 
-export interface IStautsPayload {
+export interface IStatusPayload {
   phone_number: string
   country_code: string
 }
 
-interface ResultData {
+interface StatusResultData {
   status: number
   routeDetail: {
     number: string
@@ -43,5 +43,25 @@ interface ResultData {
   }
 }
 export interface IStatusResponse {
-  result: ResultData[]
+  result: StatusResultData[]
+}
+
+export interface IHistoryPayload {
+  message_id: string
+}
+
+export interface IHistoryResponse {
+  sender: string
+  receiver: string
+  message: string
+  amount: number
+  reroute: number
+  status: string
+  sms_type: string
+  send_by: string
+  media_url: string | null
+  message_id: string
+  notify_url: string | null
+  notify_id: string | null
+  created_at: string
 }
