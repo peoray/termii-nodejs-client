@@ -3,6 +3,8 @@ import {
   IGetBalanceResponse,
   ISearchPayload,
   ISearchResponse,
+  IStatusResponse,
+  IStautsPayload,
 } from '../../types'
 import { IAxiosStruct, handleErrors } from '../../utils'
 
@@ -36,9 +38,23 @@ export class Insights extends TermiiCore {
 
       const response = await this.useRequest(requestObj)
 
-      console.log(response)
-
       return response?.data as ISearchResponse
+    } catch (error) {
+      return handleErrors(error)
+    }
+  }
+
+  public async getStatus(data: IStautsPayload): Promise<IStatusResponse> {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'GET',
+        url: `/insight/number/query?phone_number=${data.phone_number}&country_code=${data.country_code}`,
+        data,
+      }
+
+      const response = await this.useRequest(requestObj)
+
+      return response?.data as IStatusResponse
     } catch (error) {
       return handleErrors(error)
     }

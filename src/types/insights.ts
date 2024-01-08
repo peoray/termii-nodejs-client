@@ -16,3 +16,32 @@ export interface ISearchResponse {
   network: string
   network_code: string
 }
+
+export interface IStautsPayload {
+  phone_number: string
+  country_code: string
+}
+
+interface ResultData {
+  status: number
+  routeDetail: {
+    number: string
+    ported: number
+  }
+  countryDetail: {
+    countryCode: string
+    mobileCountryCode: string
+    iso: string
+  }
+  operatorDetail: {
+    operatorCode: string
+    operatorName: string
+    mobileNumberCode: string
+    mobileRoutingCode: string
+    carrierIdentificationCode: string
+    lineType: string
+  }
+}
+export interface IStatusResponse {
+  result: ResultData[]
+}

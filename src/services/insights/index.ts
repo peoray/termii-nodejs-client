@@ -11,6 +11,7 @@ export class InsightsHandler {
     return {
       getBalance: this.insigntsInstance.getBalance.bind(this.insigntsInstance),
       search: this.insigntsInstance.search.bind(this.insigntsInstance),
+      getStatus: this.insigntsInstance.getStatus.bind(this.insigntsInstance),
     }
   }
 }
