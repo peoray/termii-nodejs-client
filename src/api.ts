@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { IAxiosStruct, BaseError, handleErrors } from './utils'
 
 /**
@@ -17,6 +17,7 @@ export class TermiiCore {
    */
   constructor(public apiKey: string) {
     this.apiKey = apiKey
+
     // Create an Axios instance with a base URL and common headers.
     this.request = axios.create({
       baseURL: 'https://api.ng.termii.com/api',
@@ -30,9 +31,9 @@ export class TermiiCore {
   /**
    * Makes an HTTP request using Axios based on the provided request structure.
    * @param {IAxiosStruct} req - The request structure containing method, URL, and data.
-   * @returns {Promise} A promise that resolves with the Axios response or rejects with an error.
+   * @returns {Promise<AxiosResponse>} A promise that resolves with the Axios response or rejects with an error.
    */
-  public async useRequest(req: IAxiosStruct) {
+  public async useRequest(req: IAxiosStruct): Promise<AxiosResponse> {
     try {
       const { method, url, data, page } = req
 
@@ -46,20 +47,26 @@ export class TermiiCore {
           params.page = page
         }
 
-        return this.request({
+        // Using AxiosRequestConfig for the request configuration
+        const config: AxiosRequestConfig = {
           method,
           url,
           params,
-        })
+        }
+
+        return this.request(config)
       } else if (method === 'POST' || method === 'PATCH') {
-        return this.request({
+        // Using AxiosRequestConfig for the request configuration
+        const config: AxiosRequestConfig = {
           method,
           url,
           data: {
             ...data,
             api_key: this.apiKey,
           },
-        })
+        }
+
+        return this.request(config)
       } else {
         // If the HTTP method is invalid, throw a BaseError.
         throw new BaseError({ message: 'Invalid HTTP method' })
