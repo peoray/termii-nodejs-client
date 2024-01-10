@@ -10,6 +10,11 @@ export class Number extends TermiiCore {
     super(apiKey)
   }
 
+  /**
+   * Sends a message with an auto-generated sender number.
+   * @param {ISendMessageWithNumber} data - The payload containing the necessary information for sending the message with a specific sender number.
+   * @returns {Promise<ISendMessageWithNumberResponse>} A promise that resolves with the response from sending the message or rejects with an error.
+   */
   public async sendMessageWithNumber(
     data: ISendMessageWithNumber
   ): Promise<ISendMessageWithNumberResponse> {
