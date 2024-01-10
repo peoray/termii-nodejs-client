@@ -1,10 +1,10 @@
-import { Message } from './message/message'
+import { Message } from './message'
 import { SenderId } from './sender-id'
-import { Number } from './number/number'
-import { Template } from './template/template'
-import { Phonebook } from './phonebook/phonebook'
-import { Contact } from './contact/contact'
-import { Campaign } from './campaign/campaign'
+import { Number } from './number'
+import { Template } from './template'
+import { Phonebook } from './phonebook'
+import { Contact } from './contact'
+import { Campaign } from './campaign'
 
 /**
  * The MessageHandler class handles message-related functionalities by providing access to message and sender ID instances.

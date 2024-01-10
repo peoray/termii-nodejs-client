@@ -1,4 +1,4 @@
-import { Token } from './token'
+import { Token } from '../src/services/token/token'
 import {
   ISendToken,
   ISendTokenResponse,
@@ -12,9 +12,9 @@ import {
   IVerifyToken,
   IInAppTokenResponse,
   IInAppToken,
-} from '../../types'
+} from '../src/types'
 
-jest.mock('../../api')
+jest.mock('../src/api')
 describe('Token class', () => {
   const apiKey = 'your_api_key'
   let tokenInstance: Token

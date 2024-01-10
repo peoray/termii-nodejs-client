@@ -1,9 +1,9 @@
-import { Message } from './message'
+import { Message } from '../src/services/messaging/message'
 import {
   ISendBulkMessage,
   ISendMessage,
   ISendMessageResponse,
-} from '../../../types'
+} from '../src/types'
 
 const message = new Message('api-key')
 

@@ -1,5 +1,5 @@
-import { Contact } from './contact'
-import { IDeleteContactResponse, IFetchContactsResponse } from '../../../types'
+import { Contact } from '../src/services/messaging/contact'
+import { IDeleteContactResponse, IFetchContactsResponse } from '../src/types'
 
 const contactInstance = new Contact('api-key')
 
