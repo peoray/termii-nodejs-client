@@ -1,4 +1,4 @@
-import { SenderId } from './index'
+import { SenderId } from './sender-id'
 import {
   ISenderIDResponse,
   IRequestSenderID,

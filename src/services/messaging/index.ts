@@ -1,5 +1,5 @@
 import { Message } from './message/message'
-import { SenderId } from './sender-id'
+import { SenderId } from './sender-id/sender-id'
 import { Number } from './number/number'
 import { Template } from './template/template'
 import { Phonebook } from './phonebook/phonebook'
