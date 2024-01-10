@@ -1,4 +1,4 @@
-import { Message } from '../src/services/messaging/message/message'
+import { Message } from '../src/services/messaging/message'
 import {
   ISendBulkMessage,
   ISendMessage,

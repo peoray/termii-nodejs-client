@@ -1,4 +1,4 @@
-import { Number } from '../src/services/messaging/number/number'
+import { Number } from '../src/services/messaging/number'
 import {
   ISendMessageWithNumber,
   ISendMessageWithNumberResponse,

@@ -1,9 +1,9 @@
-import { TermiiCore } from '../../../api'
+import { TermiiCore } from '../../api'
 import {
   ISendMessageWithNumber,
   ISendMessageWithNumberResponse,
-} from '../../../types'
-import { IAxiosStruct, handleErrors } from '../../../utils'
+} from '../../types'
+import { IAxiosStruct, handleErrors } from '../../utils'
 
 export class Number extends TermiiCore {
   constructor(apiKey: string) {

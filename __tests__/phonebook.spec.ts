@@ -1,4 +1,4 @@
-import { Phonebook } from '../src/services/messaging/phonebook/phonebook'
+import { Phonebook } from '../src/services/messaging/phonebook'
 import {
   IFetchPhonebooksResponse,
   IPhonebook,

@@ -1,4 +1,4 @@
-import { Template } from '../src/services/messaging/template/template'
+import { Template } from '../src/services/messaging/template'
 import { IDeviceTemplate, IDeviceTemplateResponse } from '../src/types'
 
 const templateInstance = new Template('api-key')

@@ -1,12 +1,12 @@
-import { TermiiCore } from '../../../api'
-import { IAxiosStruct, handleErrors } from '../../../utils'
+import { TermiiCore } from '../../api'
+import { IAxiosStruct, handleErrors } from '../../utils'
 // import { AxiosError } from 'axios'
 import {
   ISendMessageResponse,
   ISendMessage,
   ISendBulkMessage,
   ISendBulkMessageResponse,
-} from '../../../types/message'
+} from '../../types/message'
 
 /**
  * The Message class extends the TermiiCore class and provides methods for sending messages.

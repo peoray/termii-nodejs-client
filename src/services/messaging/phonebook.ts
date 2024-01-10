@@ -1,10 +1,10 @@
-import { TermiiCore } from '../../../api'
+import { TermiiCore } from '../../api'
 import {
   IFetchPhonebooksResponse,
   IPhonebook,
   IPhonebookResponse,
-} from '../../../types'
-import { IAxiosStruct, handleErrors } from '../../../utils'
+} from '../../types'
+import { IAxiosStruct, handleErrors } from '../../utils'
 
 /**
  * Represents the Phonebook class, extending TermiiCore, to interact with the Termii API for phonebook-related functionalities.

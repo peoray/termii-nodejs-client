@@ -1,4 +1,4 @@
-import { Campaign } from '../src/services/messaging/campaign/campaign'
+import { Campaign } from '../src/services/messaging/campaign'
 import {
   IFetchCampaignHistoryResponse,
   IFetchCampaignsResponse,

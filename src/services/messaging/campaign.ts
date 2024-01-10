@@ -1,11 +1,11 @@
-import { TermiiCore } from '../../../api'
+import { TermiiCore } from '../../api'
 import {
   IFetchCampaignsResponse,
   IFetchCampaignHistoryResponse,
   ISendCampaign,
   ISendCampaignResponse,
-} from '../../../types'
-import { IAxiosStruct, handleErrors } from '../../../utils'
+} from '../../types'
+import { IAxiosStruct, handleErrors } from '../../utils'
 
 /**
  * Represents the Campaign class, extending TermiiCore, to interact with the Termii API for campaign-related functionalities.

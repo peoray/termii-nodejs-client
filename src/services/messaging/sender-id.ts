@@ -1,10 +1,10 @@
-import { TermiiCore } from '../../../api'
+import { TermiiCore } from '../../api'
 import {
   ISenderIDResponse,
   IRequestSenderID,
   IRequestSenderIDResponse,
-} from '../../../types'
-import { IAxiosStruct, handleErrors } from '../../../utils'
+} from '../../types'
+import { IAxiosStruct, handleErrors } from '../../utils'
 
 /**
  * A class handling Sender ID functionalities, extends TermiiCore.

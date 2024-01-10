@@ -1,4 +1,4 @@
-import { SenderId } from '../src/services/messaging/sender-id/sender-id'
+import { SenderId } from '../src/services/messaging/sender-id'
 import {
   ISenderIDResponse,
   IRequestSenderID,

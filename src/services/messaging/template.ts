@@ -1,6 +1,6 @@
-import { TermiiCore } from '../../../api'
-import { IDeviceTemplate, IDeviceTemplateResponse } from '../../../types'
-import { IAxiosStruct, handleErrors } from '../../../utils'
+import { TermiiCore } from '../../api'
+import { IDeviceTemplate, IDeviceTemplateResponse } from '../../types'
+import { IAxiosStruct, handleErrors } from '../../utils'
 
 /**
  * Represents the Template class, extending TermiiCore, to interact with the Termii API for template-related functionalities.

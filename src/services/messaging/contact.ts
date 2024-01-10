@@ -1,11 +1,11 @@
-import { TermiiCore } from '../../../api'
+import { TermiiCore } from '../../api'
 import {
   ICreateContact,
   ICreateContactResponse,
   IDeleteContactResponse,
   IFetchContactsResponse,
-} from '../../../types'
-import { IAxiosStruct, handleErrors } from '../../../utils'
+} from '../../types'
+import { IAxiosStruct, handleErrors } from '../../utils'
 
 /**
  * Represents the Contact class, extending TermiiCore, to interact with the Termii API for contact-related functionalities.
