@@ -1,7 +1,6 @@
 import { Insights } from './insights'
 import {
   IGetBalanceResponse,
-  IHistoryResponse,
   ISearchResponse,
   IStatusResponse,
 } from '../../types'
