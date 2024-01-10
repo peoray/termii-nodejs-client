@@ -15,11 +15,25 @@ import {
 } from '../../types'
 import { IAxiosStruct, handleErrors } from '../../utils'
 
+/**
+ * Represents the Token class, extending TermiiCore, to interact with the Termii API for token-related functionalities.
+ * @extends TermiiCore
+ */
 export class Token extends TermiiCore {
+  /**
+   * Creates an instance of Token.
+   * @constructor
+   * @param {string} apiKey - The API key used for authorization.
+   */
   constructor(apiKey: string) {
     super(apiKey)
   }
 
+  /**
+   * Sends an OTP token via SMS.
+   * @param {ISendToken} data - The payload containing the necessary information for sending the token.
+   * @returns {Promise<ISendTokenResponse>} A promise that resolves with the response from sending the token or rejects with an error.
+   */
   public async sendToken(data: ISendToken): Promise<ISendTokenResponse> {
     try {
       const requestObj: IAxiosStruct = {
@@ -36,6 +50,11 @@ export class Token extends TermiiCore {
     }
   }
 
+  /**
+   * Sends an OTP token via voice call.
+   * @param {ISendVoiceToken} data - The payload containing the necessary information for sending the voice token.
+   * @returns {Promise<ISendVoiceTokenResponse>} A promise that resolves with the response from sending the voice token or rejects with an error.
+   */
   public async sendVoiceToken(
     data: ISendVoiceToken
   ): Promise<ISendVoiceTokenResponse> {
@@ -54,6 +73,11 @@ export class Token extends TermiiCore {
     }
   }
 
+  /**
+   * Makes a voice call for OTP verification.
+   * @param {IMakeVoiceCall} data - The payload containing the necessary information for making the voice call.
+   * @returns {Promise<IMakeVoiceCallResponse>} A promise that resolves with the response from making the voice call or rejects with an error.
+   */
   public async makeVoiceCall(
     data: IMakeVoiceCall
   ): Promise<IMakeVoiceCallResponse> {
@@ -72,6 +96,11 @@ export class Token extends TermiiCore {
     }
   }
 
+  /**
+   * Sends an OTP token via email.
+   * @param {ISendEmailToken} data - The payload containing the necessary information for sending the email token.
+   * @returns {Promise<ISendEmailTokenResponse>} A promise that resolves with the response from sending the email token or rejects with an error.
+   */
   public async sendEmailToken(
     data: ISendEmailToken
   ): Promise<ISendEmailTokenResponse> {
@@ -90,6 +119,11 @@ export class Token extends TermiiCore {
     }
   }
 
+  /**
+   * Verifies an OTP token received via SMS.
+   * @param {IVerifyToken} data - The payload containing the necessary information for verifying the token.
+   * @returns {Promise<IVerifyTokenResponse>} A promise that resolves with the response from verifying the token or rejects with an error.
+   */
   public async verifyToken(data: IVerifyToken): Promise<IVerifyTokenResponse> {
     try {
       const requestObj: IAxiosStruct = {
@@ -106,6 +140,11 @@ export class Token extends TermiiCore {
     }
   }
 
+  /**
+   * Generates an OTP token for in-app use.
+   * @param {IInAppToken} data - The payload containing the necessary information for generating the in-app token.
+   * @returns {Promise<IInAppTokenResponse>} A promise that resolves with the response from generating the in-app token or rejects with an error.
+   */
   public async inAppToken(data: IInAppToken): Promise<IInAppTokenResponse> {
     try {
       const requestObj: IAxiosStruct = {
