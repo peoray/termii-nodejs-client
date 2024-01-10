@@ -1,10 +1,10 @@
-import { Campaign } from './campaign'
+import { Campaign } from '../src/services/messaging/campaign/campaign'
 import {
   IFetchCampaignHistoryResponse,
   IFetchCampaignsResponse,
   ISendCampaign,
   ISendCampaignResponse,
-} from '../../../types'
+} from '../src/types'
 
 const campaignInstance = new Campaign('api-key')
 

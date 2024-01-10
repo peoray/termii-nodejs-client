@@ -1,11 +1,11 @@
-import { Insights } from './insights'
+import { Insights } from '../src/services/insights/insights'
 import {
   IGetBalanceResponse,
   ISearchResponse,
   IStatusResponse,
-} from '../../types'
+} from '../src/types'
 
-jest.mock('../../api')
+jest.mock('../src/api')
 describe('Token class', () => {
   const apiKey = 'your_api_key'
   let insightsInstance: Insights

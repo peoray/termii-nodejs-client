@@ -1,6 +1,18 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src", "types"],
+  "include": [
+    "src",
+    "types",
+    "__tests__/insights.spec.ts",
+    "__tests__/token.spec.ts",
+    "__tests__/campaign.spec.ts",
+    "__tests__/contact.spec.ts",
+    "__tests__/message.spec.ts",
+    "__tests__/number.spec.ts",
+    "__tests__/phonebook.spec.ts",
+    "__tests__/sender-id.spec.ts",
+    "__tests__/template.spec.ts"
+  ],
   "exclude": ["node_modules", "**/test/*"],
   "compilerOptions": {
     "module": "ESNext",

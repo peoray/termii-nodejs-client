@@ -1,9 +1,9 @@
-import { Phonebook } from './phonebook'
+import { Phonebook } from '../src/services/messaging/phonebook/phonebook'
 import {
   IFetchPhonebooksResponse,
   IPhonebook,
   IPhonebookResponse,
-} from '../../../types'
+} from '../src/types'
 
 const phonebookInstance = new Phonebook('api-key')
 

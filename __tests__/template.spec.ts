@@ -1,5 +1,5 @@
-import { Template } from './template'
-import { IDeviceTemplate, IDeviceTemplateResponse } from '../../../types'
+import { Template } from '../src/services/messaging/template/template'
+import { IDeviceTemplate, IDeviceTemplateResponse } from '../src/types'
 
 const templateInstance = new Template('api-key')
 

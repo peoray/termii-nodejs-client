@@ -1,8 +1,8 @@
-import { Number } from './number'
+import { Number } from '../src/services/messaging/number/number'
 import {
   ISendMessageWithNumber,
   ISendMessageWithNumberResponse,
-} from '../../../types'
+} from '../src/types'
 
 const numberInstance = new Number('api-key')
 

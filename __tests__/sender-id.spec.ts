@@ -1,9 +1,9 @@
-import { SenderId } from './sender-id'
+import { SenderId } from '../src/services/messaging/sender-id/sender-id'
 import {
   ISenderIDResponse,
   IRequestSenderID,
   IRequestSenderIDResponse,
-} from '../../../types'
+} from '../src/types'
 
 const message = new SenderId('api-key')
 
